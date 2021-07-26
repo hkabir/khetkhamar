@@ -1,0 +1,150 @@
+/*
+Author: Mahmudul Anam
+Variable
+
+*/
+
+/******************************
+        Font Veriable
+********************************/
+
+/******************************
+        Color Veriable
+********************************/
+$navbackground: #e9d5d5;
+$banner-background: url("./asset/images//banner-bg.jpg");
+$product-font-family: Lato, sans-serif;
+$product-text-color: rgb(13, 17, 54);
+/***
+================================
+            Main
+================================
+**/
+body {
+  font-family: "Poppins";
+  font-size: 14px;
+}
+.header {
+  background-color: $navbackground !important;
+}
+
+.banner {
+  background: $banner-background;
+  height: 70vh;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.banner h2 {
+  font-size: 45px;
+  line-height: 65px;
+  font-weight: 800;
+  margin-top: 100px;
+}
+
+.align-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-control-borderless {
+  border: none;
+}
+
+.form-control-borderless:hover,
+.form-control-borderless:active,
+.form-control-borderless:focus {
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+.featured-image {
+  max-width: 100%;
+}
+
+.row-space-top {
+  margin-top: 60px !important;
+}
+section {
+  margin-left: 40px;
+  margin-right: 40px;
+}
+/***
+================================
+            Footer
+================================
+**/
+.packshot {
+  max-width: 100%;
+}
+.product-title {
+  font-family: $product-font-family;
+  font-size: 15px;
+  font-weight: 700;
+  color: $product-text-color;
+  margin: 0px 0px 7px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.product-weight {
+  font-family: $product-font-family;
+  font-size: 13px;
+  font-weight: 400;
+  color: $product-text-color;
+  display: block;
+}
+.product-price {
+  font-family: $product-font-family;
+  font-size: 15px;
+  font-weight: 700;
+  color: $product-text-color;
+}
+.btn-cart-plus {
+  height: 0px;
+}
+.btn-cart-plus-minus {
+  display: flex;
+  background-color: rgb(0, 158, 127);
+  color: rgb(255, 255, 255);
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 200px;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  align-items: center;
+  overflow: hidden;
+  flex-shrink: 0;
+  width: 104px;
+  height: 36px;
+}
+.btn-cart {
+  border: 2px solid rgb(247, 247, 247);
+  border-radius: 18px;
+  height: 36px;
+  padding-left: 17px;
+  padding-right: 17px;
+  font-size: 13px;
+  font-weight: 700;
+}
+/***
+================================
+            Footer
+================================
+**/
+
+/***
+================================
+          Body
+================================
+**/
+
+/***
+================================
+          Mobile
+================================
+**/
