@@ -1,4 +1,5 @@
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "../node_modules/bootstrap/dist/js/bootstrap.bundle";
 //import React, { usestate, useEffect } from "react";
 import "./App.scss";
 import { ProductList } from "./Component/Products/ProductList";
