@@ -1,6 +1,10 @@
 import React from "react";
 
-export const Banner = () => {
+export const Banner = ({ setKeyword }) => {
+  const handleChange = (e) => {
+    setKeyword(e.target.value);
+  };
+
   return (
     <section className="banner">
       <div className="container-fluid banner">
@@ -18,6 +22,7 @@ export const Banner = () => {
                     className="form-control form-control-lg form-control-borderless"
                     type="search"
                     placeholder="Search topics or keywords"
+                    onChange={handleChange}
                   />
                 </div>
 
