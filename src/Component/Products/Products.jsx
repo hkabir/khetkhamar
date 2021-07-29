@@ -1,5 +1,6 @@
 import React from "react";
 import { useGlobalContext } from "../../Context";
+//import { FaCartArrowDown } from "react-icons/fa";
 
 export const Product = () => {
   const { products } = useGlobalContext();
