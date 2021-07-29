@@ -6,7 +6,7 @@ import { ProductList } from "./Component/Products/ProductList";
 import { Banner } from "./Component/Banner";
 import { Featured } from "./Component/Featured/Featured";
 import { NavBar } from "./Component/NavBar.jsx";
-import ProductsData from "./ProductsData";
+
 import { CategoriesPRoduct } from "./Component/Categories/CategoriesPRoduct";
 
 const App = () => {
@@ -25,7 +25,7 @@ const App = () => {
       <NavBar />
       <Banner />
       <Featured />
-      <ProductList products={ProductsData} />
+      <ProductList />
       <CategoriesPRoduct />
     </>
   );

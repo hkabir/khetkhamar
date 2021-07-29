@@ -1,7 +1,9 @@
 import React from "react";
 import { Product } from "./Products";
+import { useGlobalContext } from "../../Context";
 
-export const ProductList = ({ products }) => {
+export const ProductList = () => {
+  const { products } = useGlobalContext();
   return (
     <section>
       <div className="container-fluid">
