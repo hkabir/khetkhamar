@@ -4,6 +4,7 @@ import { useGlobalContext } from "../../Context";
 
 export const ProductList = () => {
   const { products } = useGlobalContext();
+  console.log(products);
   return (
     <section>
       <div className="container-fluid">

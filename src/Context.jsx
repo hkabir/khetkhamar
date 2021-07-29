@@ -3,7 +3,7 @@ import ProductsData from "./ProductsData";
 
 const AppContext = React.createContext();
 
-export const AppProvder = ({ children }) => {
+export const AppProvider = ({ children }) => {
   const [products, setProducts] = useState(ProductsData);
 
   // const [keyword, setKeyword] = usestate("");
@@ -14,6 +14,8 @@ export const AppProvder = ({ children }) => {
   // );
   // setProducts(result);
   //}, [keyword, setProducts]);
+
+  // const addToCart=()=>{}
 
   return (
     <AppContext.Provider value={{ products }}>{children}</AppContext.Provider>

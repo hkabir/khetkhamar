@@ -3,15 +3,31 @@ import { useGlobalContext } from "../../Context";
 
 export const Product = () => {
   const { products } = useGlobalContext();
+  //console.log(products);
+
   return (
-    <div className="  col-lg-3 col-6" key={products.id}>
-      <img src={products.image} alt="" className="packshot" />
-      <h3 className="product-title">{products.productname}</h3>
-      <span className="product-weight">{products.productweight} pc(s)</span>
-      <span className="product-price">${products.productprice}</span>
-      <button type="button" class="btn-cart" value="Cart">
-        Cart
-      </button>
-    </div>
+    <>
+      <section>
+        <div className="container-fluid">
+          <div className="row justify-content-md-center row-space-top">
+            {products.map((item) => {
+              return (
+                <div className="col-lg-3 col-6" key={item.id}>
+                  <img src={item.image} alt="" className="packshot" />
+                  <h3 className="product-title">{item.productname}</h3>
+                  <span className="product-weight">
+                    {item.productweight} pc(s)
+                  </span>
+                  <span className="product-price">${item.productprice}</span>
+                  <button type="button" class="btn-cart" value="Cart">
+                    Cart
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+    </>
   );
 };
