@@ -1,6 +1,9 @@
 import React from "react";
+import { useGlobalContext } from "../Context";
 
-export const Banner = ({ setKeyword }) => {
+export const Banner = () => {
+  const { setKeyword } = useGlobalContext();
+
   const handleChange = (e) => {
     setKeyword(e.target.value);
   };
