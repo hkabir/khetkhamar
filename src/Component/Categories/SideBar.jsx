@@ -6,7 +6,10 @@ import { BsFillPeopleFill } from "react-icons/bs";
 
 export const SideBar = () => {
   return (
-    <div className="col-sm-3 flex-grow-sm-1 flex-shrink-1 flex-grow-0 sticky-top pb-sm-0 pb-3">
+    <div
+      className="col-sm-3 flex-grow-sm-1 flex-shrink-1 flex-grow-0 sticky-top pb-sm-0 pb-3"
+      id="side"
+    >
       <div className="bg-light border rounded-3 p-1 h-100 sticky-top">
         <h6 className="d-none d-sm-block text-muted">Categories</h6>
         <ul className="nav nav-pills flex-sm-column flex-row mb-auto justify-content-between text-truncate">
