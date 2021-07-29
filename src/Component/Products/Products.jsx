@@ -9,10 +9,10 @@ export const Product = () => {
     <>
       <section>
         <div className="container-fluid">
-          <div className="row justify-content-md-center row-space-top">
+          <div className="row justify-content-md-center row-space-top ml-5">
             {products.map((item) => {
               return (
-                <div className="col-lg-3 col-6" key={item.id}>
+                <div className="col-lg-3 col-6 product-cart" key={item.id}>
                   <img src={item.image} alt="" className="packshot" />
                   <h3 className="product-title">{item.productname}</h3>
                   <span className="product-weight">
@@ -20,7 +20,7 @@ export const Product = () => {
                   </span>
                   <span className="product-price">${item.productprice}</span>
                   <button type="button" class="btn-cart" value="Cart">
-                    Cart
+                    Add To Cart
                   </button>
                 </div>
               );

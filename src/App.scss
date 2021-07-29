@@ -78,9 +78,7 @@ section {
 **/
 .packshot {
   max-width: 100%;
-  max-height: 80%;
-
-  margin-left: 40px;
+  max-height: 100%;
 }
 .product-title {
   font-family: Lato, sans-serif;
@@ -92,7 +90,7 @@ section {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  text-align: center;
+  margin-left: 10px;
   text-transform: capitalize;
 }
 .product-weight {
@@ -101,7 +99,8 @@ section {
   font-weight: 400;
   color: $product-text-color;
   display: block;
-  text-align: center;
+  margin-left: 10px;
+
   text-transform: capitalize;
 }
 .product-price {
@@ -109,7 +108,7 @@ section {
   font-size: 15px;
   font-weight: 700;
   color: $product-text-color;
-  margin-left: 190px;
+  margin-left: 10px;
 }
 .btn-cart-plus {
   height: 0px;
@@ -139,8 +138,17 @@ section {
   padding-right: 17px;
   font-size: 13px;
   font-weight: 700;
+  width: 40%;
+  display: block;
+  text-align: center;
+  background-color: #27ae60;
 }
 #side a {
   font-size: 20px;
   color: black !important;
+}
+.product-cart {
+  border-radius: 10px;
+
+  padding-bottom: 10px;
 }
