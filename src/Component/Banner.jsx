@@ -30,7 +30,11 @@ export const Banner = () => {
                 </div>
 
                 <div className="col-auto">
-                  <button className="btn btn-lg btn-success" type="submit">
+                  <button
+                    className="btn btn-lg btn-success"
+                    type="submit"
+                    onClick={handleChange}
+                  >
                     Search
                   </button>
                 </div>

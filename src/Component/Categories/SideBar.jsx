@@ -1,4 +1,8 @@
 import React from "react";
+import { FaHome, FaAddressCard, FaProductHunt } from "react-icons/fa";
+import { MdDashboard } from "react-icons/md";
+//import { GiBrickWall } from "react-icons/gi";
+import { BsFillPeopleFill } from "react-icons/bs";
 
 export const SideBar = () => {
   return (
@@ -7,33 +11,35 @@ export const SideBar = () => {
         <h6 className="d-none d-sm-block text-muted">Categories</h6>
         <ul className="nav nav-pills flex-sm-column flex-row mb-auto justify-content-between text-truncate">
           <li className="nav-item">
-            <a href="#" className="nav-link px-2 text-truncate">
-              <i className="bi bi-house fs-4"></i>
-              <span className="d-none d-sm-inline">Home</span>
+            <a href="#" className="nav-link px-2 text-truncate ">
+              <FaHome />
+
+              <span className="d-none d-sm-inline ml-3">Home</span>
             </a>
           </li>
           <li>
             <a href="#" className="nav-link px-2 text-truncate">
-              <i className="bi bi-speedometer fs-4"></i>
-              <span className="d-none d-sm-inline">Dashboard</span>
+              <MdDashboard />
+
+              <span className="d-none d-sm-inline ml-3">Dashboard</span>
             </a>
           </li>
           <li>
             <a href="#" className="nav-link px-2 text-truncate">
-              <i className="bi bi-card-text fs-4"></i>
-              <span className="d-none d-sm-inline">Orders</span>
+              <FaAddressCard />
+              <span className="d-none d-sm-inline ml-3">Orders</span>
             </a>
           </li>
           <li>
             <a href="#" className="nav-link px-2 text-truncate">
-              <i className="bi bi-bricks fs-4"></i>
-              <span className="d-none d-sm-inline">Products</span>
+              <FaProductHunt />
+              <span className="d-none d-sm-inline ml-3">Products</span>
             </a>
           </li>
           <li>
             <a href="#" className="nav-link px-2 text-truncate">
-              <i className="bi bi-people fs-4"></i>
-              <span className="d-none d-sm-inline">Customers</span>
+              <BsFillPeopleFill />
+              <span className="d-none d-sm-inline ml-3">Customers</span>
             </a>
           </li>
         </ul>

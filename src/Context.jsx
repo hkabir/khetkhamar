@@ -18,7 +18,7 @@ export const AppProvider = ({ children }) => {
   // const addToCart=()=>{}
 
   return (
-    <AppContext.Provider value={{ products, setKeyword: setKeyword }}>
+    <AppContext.Provider value={{ products: products, setKeyword: setKeyword }}>
       {children}
     </AppContext.Provider>
   );
