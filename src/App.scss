@@ -197,7 +197,16 @@ section {
   color: #ffff;
   text-decoration: non !important;
 }
-
+.cart-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  .cart-img {
+    width: 80px;
+    height: 90px;
+  }
+}
 #side a {
   font-size: 20px;
   color: black !important;

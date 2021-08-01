@@ -6,6 +6,7 @@ const AppContext = React.createContext();
 export const AppProvider = ({ children }) => {
   const [products, setProducts] = useState([...ProductsData]);
   const [openCart, setOpenCart] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
 
   const [keyword, setKeyword] = useState("");
 
@@ -25,8 +26,9 @@ export const AppProvider = ({ children }) => {
   const cartClose = () => {
     setOpenCart(false);
   };
-  const addToCart = () => {
-    console.log(alert("addtocart"));
+  const addToCart = (id) => {
+    const item = products.find((product) => product.id === id);
+    setCartItems((items) => [...items, item]);
   };
 
   return (
@@ -39,6 +41,9 @@ export const AppProvider = ({ children }) => {
         cartOpen: cartOpen,
         cartClose: cartClose,
         handleCart: handleCart,
+        cartItems: cartItems,
+        // eslint-disable-next-line no-dupe-keys
+        addToCart: addToCart,
       }}
     >
       {children}

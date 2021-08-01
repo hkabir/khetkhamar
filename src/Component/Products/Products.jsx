@@ -25,6 +25,7 @@ export const Product = () => {
                     type="button"
                     className="btn-cart btn-card"
                     value="Cart"
+                    onClick={() => addToCart(item.id)}
                   >
                     <i>
                       <BiBasket className="fa-cart" />
