@@ -1,16 +1,17 @@
 import React from "react";
 import { useGlobalContext } from "../../Context";
-//import { FaCartArrowDown } from "react-icons/fa";
+import { BiBasket } from "react-icons/bi";
+import { FaShoppingBag } from "react-icons/fa";
 
 export const Product = () => {
-  const { products } = useGlobalContext();
+  const { products, addToCart, handleCart } = useGlobalContext();
   //console.log(products);
 
   return (
     <>
-      <section>
+      <section className="sec">
         <div className="container-fluid">
-          <div className="row justify-content-md-center row-space-top ml-5">
+          <div className="row justify-content-md-center row-space-top">
             {products.map((item) => {
               return (
                 <div className="col-lg-3 col-6 product-cart" key={item.id}>
@@ -20,12 +21,25 @@ export const Product = () => {
                     {item.productweight} pc(s)
                   </span>
                   <span className="product-price">${item.productprice}</span>
-                  <button type="button" class="btn-cart" value="Cart">
-                    Add To Cart
+                  <button
+                    type="button"
+                    className="btn-cart btn-card"
+                    value="Cart"
+                  >
+                    <i>
+                      <BiBasket className="fa-cart" />
+                    </i>
+                    Cart
                   </button>
                 </div>
               );
             })}
+          </div>
+          <div className="cart-bag" onClick={handleCart}>
+            <span className="items">
+              <FaShoppingBag className="c-box" />1 item
+            </span>
+            <span className="total">$2.00</span>
           </div>
         </div>
       </section>

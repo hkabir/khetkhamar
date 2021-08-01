@@ -5,6 +5,7 @@ const AppContext = React.createContext();
 
 export const AppProvider = ({ children }) => {
   const [products, setProducts] = useState([...ProductsData]);
+  const [openCart, setOpenCart] = useState(false);
 
   const [keyword, setKeyword] = useState("");
 
@@ -15,10 +16,31 @@ export const AppProvider = ({ children }) => {
     setProducts(result);
   }, [keyword]);
 
-  // const addToCart=()=>{}
+  const handleCart = () => {
+    setOpenCart(true);
+  };
+  const cartOpen = () => {
+    setOpenCart(true);
+  };
+  const cartClose = () => {
+    setOpenCart(false);
+  };
+  const addToCart = () => {
+    console.log(alert("addtocart"));
+  };
 
   return (
-    <AppContext.Provider value={{ products: products, setKeyword: setKeyword }}>
+    <AppContext.Provider
+      value={{
+        products: products,
+        setKeyword: setKeyword,
+        addToCart: addToCart,
+        openCart: openCart,
+        cartOpen: cartOpen,
+        cartClose: cartClose,
+        handleCart: handleCart,
+      }}
+    >
       {children}
     </AppContext.Provider>
   );
