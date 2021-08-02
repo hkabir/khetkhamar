@@ -22,9 +22,20 @@ export const Cart = () => {
       </div>
 
       <div className="cart-items">
-        {cartItems.map((item) => (
-          <CartItem {...item} />
-        ))}
+        {cartItems.length === 0 && (
+          <div className="emp-cart">
+            <div className="info">
+              <div className="emp-bag">
+                <FaShoppingBag />
+              </div>
+              <span>cart is empty</span>
+            </div>
+          </div>
+        )}
+        {cartItems.length !== 0 &&
+          cartItems.map((item) => (
+            <CartItem {...item} price={item.productprice * item.quantity} />
+          ))}
       </div>
 
       <div className="cart-checkout">
@@ -99,5 +110,18 @@ const CartWrapper = styled.div`
     border-radius: 10px;
     height: 40px;
     text-align: center;
+  }
+  .emp-cart {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    span {
+      font-size: 30px;
+      text-transform: capitalize;
+    }
+  }
+  .emp-bag {
+    font-size: 200px;
   }
 `;

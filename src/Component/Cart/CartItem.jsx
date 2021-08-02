@@ -9,18 +9,24 @@ export const CartItem = ({
   image,
   quantity,
   id,
+  price,
 }) => {
-  const { removeItem } = useGlobalContext();
+  const { removeItem, incrementItem, decrementItem } = useGlobalContext();
   return (
     <div className="cart-item">
       <div className="quantity">
-        <FaPlus />
+        <FaPlus onClick={() => incrementItem(id)} />
         <span>{quantity}</span>
-        <FaMinus />
+        <FaMinus onClick={() => decrementItem(id)} />
       </div>
       <img src={image} alt="img" className="cart-img" />
-      <span className="cart-pname">{productname}</span>
-      <span className="cart-pprice">${productprice}</span>
+      <div className="p-price">
+        <span className="cart-pname">{productname}</span>
+        <span className="cart-pprice">
+          ${productprice} x {quantity}
+        </span>
+      </div>
+      <span className="cart-pprice">${price}</span>
       <i>
         <AiFillDelete onClick={() => removeItem(id)} />
       </i>

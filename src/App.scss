@@ -221,6 +221,11 @@ section {
     font-size: 18px;
     color: red;
   }
+  .p-price {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 .quantity {
   font-size: 18px;

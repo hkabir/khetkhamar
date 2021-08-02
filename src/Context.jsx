@@ -62,6 +62,9 @@ export const AppProvider = ({ children }) => {
     setCartItems((items) => items.filter((item) => item.id !== id));
   };
 
+  const incrementItem = (id) => {};
+  const decrementItem = (id) => {};
+
   return (
     <AppContext.Provider
       value={{
@@ -78,6 +81,8 @@ export const AppProvider = ({ children }) => {
         addToCart: addToCart,
         totalItem: totalItem,
         removeItem: removeItem,
+        decrementItem: decrementItem,
+        incrementItem: incrementItem,
       }}
     >
       {children}
