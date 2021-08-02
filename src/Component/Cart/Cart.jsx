@@ -3,28 +3,33 @@ import styled from "styled-components";
 import { useGlobalContext } from "../../Context";
 import { FaShoppingBag, FaWindowClose } from "react-icons/fa";
 import { CartItem } from "./CartItem";
+//import { Scrollbars } from "react-custom-scrollbars-2";
 
 export const Cart = () => {
-  const { openCart, cartClose, cartItems } = useGlobalContext();
+  const { openCart, cartClose, cartItems, totalPrice, totalItem } =
+    useGlobalContext();
 
   return (
     <CartWrapper show={openCart}>
       <div className="cart-top">
         <span className="items">
-          <FaShoppingBag className="c-box" />1 item
+          <FaShoppingBag className="c-box" />
+          {totalItem} Items
         </span>
         <i className="close" onClick={cartClose}>
           <FaWindowClose />
         </i>
       </div>
+
       <div className="cart-items">
         {cartItems.map((item) => (
           <CartItem {...item} />
         ))}
       </div>
+
       <div className="cart-checkout">
         <span className="c-text">checkout</span>
-        <span className="c-total">$0.00</span>
+        <span className="c-total">${totalPrice}</span>
       </div>
     </CartWrapper>
   );
@@ -73,7 +78,7 @@ const CartWrapper = styled.div`
     height: 50px;
     justify-content: space-between;
     align-items: center;
-    border-radius: 25px;
+    border-radius: 10px;
     margin-left: 50px;
     margin-top: 20px;
   }
@@ -87,9 +92,12 @@ const CartWrapper = styled.div`
   .c-total {
     background: #ffff;
     color: black;
-    margin-right: 15px;
-    font-size: 25px;
+    width: 70px;
+    margin-right: 7px;
+    font-size: 23px;
     padding: 5px;
-    border-radius: 50px;
+    border-radius: 10px;
+    height: 40px;
+    text-align: center;
   }
 `;

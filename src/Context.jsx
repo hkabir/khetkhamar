@@ -28,7 +28,38 @@ export const AppProvider = ({ children }) => {
   };
   const addToCart = (id) => {
     const item = products.find((product) => product.id === id);
-    setCartItems((items) => [...items, item]);
+    setCartItems((items) => {
+      const itemIndex = items.findIndex((currItem) => currItem.id === id);
+      if (itemIndex === -1) {
+        return [
+          ...items,
+          {
+            ...item,
+            quantity: 1,
+          },
+        ];
+      } else {
+        return items.map((currItem) =>
+          currItem.id === id
+            ? {
+                ...item,
+                quantity: parseInt(currItem.quantity) + 1,
+              }
+            : currItem
+        );
+      }
+    });
+  };
+
+  const totalPrice = cartItems.reduce(
+    (sum, cur) => sum + cur.productprice * cur.quantity,
+    0
+  );
+
+  const totalItem = cartItems.reduce((sum, cur) => sum + cur.quantity, 0);
+
+  const removeItem = (id) => {
+    setCartItems((items) => items.filter((item) => item.id !== id));
   };
 
   return (
@@ -42,8 +73,11 @@ export const AppProvider = ({ children }) => {
         cartClose: cartClose,
         handleCart: handleCart,
         cartItems: cartItems,
+        totalPrice: totalPrice,
         // eslint-disable-next-line no-dupe-keys
         addToCart: addToCart,
+        totalItem: totalItem,
+        removeItem: removeItem,
       }}
     >
       {children}

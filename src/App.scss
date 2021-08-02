@@ -167,7 +167,7 @@ section {
   display: flex;
   flex-direction: column;
   width: 120px;
-  height: 100px;
+  height: 120px;
   padding: 10px 10px;
   background-color: #308c3f;
   color: #ffff;
@@ -175,7 +175,7 @@ section {
   z-index: 1;
   cursor: pointer;
   .items {
-    font-size: 21px;
+    font-size: 15px;
     padding: 8px;
     text-transform: capitalize;
   }
@@ -202,10 +202,32 @@ section {
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
+  margin: 15px 0px;
+  border-bottom: 2px solid gray;
   .cart-img {
     width: 80px;
     height: 90px;
   }
+  .cart-pname {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .cart-pprice {
+    font-size: 18px;
+    font-weight: 600;
+    color: #308c3f;
+  }
+  i {
+    font-size: 18px;
+    color: red;
+  }
+}
+.quantity {
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }
 #side a {
   font-size: 20px;

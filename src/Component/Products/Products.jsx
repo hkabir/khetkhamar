@@ -4,7 +4,8 @@ import { BiBasket } from "react-icons/bi";
 import { FaShoppingBag } from "react-icons/fa";
 
 export const Product = () => {
-  const { products, addToCart, handleCart } = useGlobalContext();
+  const { products, addToCart, handleCart, totalPrice, totalItem } =
+    useGlobalContext();
   //console.log(products);
 
   return (
@@ -38,9 +39,10 @@ export const Product = () => {
           </div>
           <div className="cart-bag" onClick={handleCart}>
             <span className="items">
-              <FaShoppingBag className="c-box" />1 item
+              <FaShoppingBag className="c-box" />
+              {totalItem} items
             </span>
-            <span className="total">$2.00</span>
+            <span className="total">${totalPrice}</span>
           </div>
         </div>
       </section>
