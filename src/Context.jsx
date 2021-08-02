@@ -7,6 +7,7 @@ export const AppProvider = ({ children }) => {
   const [products, setProducts] = useState([...ProductsData]);
   const [openCart, setOpenCart] = useState(false);
   const [cartItems, setCartItems] = useState([]);
+  // const [count, setCount] = useState("");
 
   const [keyword, setKeyword] = useState("");
 
@@ -62,8 +63,58 @@ export const AppProvider = ({ children }) => {
     setCartItems((items) => items.filter((item) => item.id !== id));
   };
 
-  const incrementItem = (id) => {};
-  const decrementItem = (id) => {};
+  const incrementItem = (id) => {
+    const tempCart = cartItems.find((item) => item.id === id);
+    setCartItems((items) => {
+      const itemIndex = items.findIndex((currItem) => currItem.id === id);
+      if (itemIndex === -1) {
+        return [
+          ...items,
+          {
+            ...tempCart,
+            quantity: 1,
+          },
+        ];
+      } else {
+        return items.map((currItem) =>
+          currItem.id === id
+            ? {
+                ...tempCart,
+                quantity: parseInt(currItem.quantity) + 1,
+              }
+            : currItem
+        );
+      }
+    });
+  };
+  const decrementItem = (id) => {
+    const tempCart = cartItems.find((item) => item.id === id);
+    setCartItems((items) => {
+      const itemIndex = items.findIndex((currItem) => currItem.id === id);
+      if (itemIndex === -1) {
+        return [
+          ...items,
+          {
+            ...tempCart,
+            quantity: 1,
+          },
+        ];
+      } else {
+        return items
+          .map((currItem) =>
+            currItem.id === id
+              ? {
+                  ...currItem,
+                  quantity: parseInt(currItem.quantity) - 1,
+                }
+              : currItem
+          )
+          .filter((item) => {
+            return item.quantity !== 0;
+          });
+      }
+    });
+  };
 
   return (
     <AppContext.Provider
