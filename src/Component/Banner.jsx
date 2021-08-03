@@ -7,14 +7,16 @@ export const Banner = () => {
   const handleChange = (e) => {
     setKeyword(e.target.value);
   };
-
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
   return (
     <section className="banner">
       <div className="container-fluid banner">
         <div className="row justify-content-md-center ">
           <div className="col-12 col-md-10 col-lg-8">
             <h2 className="align-center">Deliver within 60 minutes</h2>
-            <form className="card card-sm">
+            <form className="card card-sm" onSubmit={handleSubmit}>
               <div className="card-body row no-gutters align-items-center">
                 <div className="col-auto">
                   <i className="fas fa-search h4 text-body"></i>
@@ -30,11 +32,7 @@ export const Banner = () => {
                 </div>
 
                 <div className="col-auto">
-                  <button
-                    className="btn btn-lg btn-success"
-                    type="submit"
-                    onClick={handleChange}
-                  >
+                  <button className="btn btn-lg btn-success" type="submit">
                     Search
                   </button>
                 </div>

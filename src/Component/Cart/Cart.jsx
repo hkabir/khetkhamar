@@ -28,7 +28,9 @@ export const Cart = () => {
               <div className="emp-bag">
                 <FaShoppingBag />
               </div>
-              <span>cart is empty</span>
+              <div>
+                <span>cart is empty</span>
+              </div>
             </div>
           </div>
         )}
@@ -57,11 +59,25 @@ const CartWrapper = styled.div`
   border-left: 3px solid #ffff;
   transform: ${(props) => (props.show ? "translateX(0)" : "translateX(100%)")};
   transition: all 0.3s ease-in-out;
+  @media (max-width: 1376px) {
+    width: 38%;
+  }
+  @media (max-width: 990px) {
+    width: 45%;
+  }
+  @media (max-width: 768px) {
+    width: 40%;
+  }
+  @media (max-width: 557px) {
+    width: 80%;
+  }
+
   .cart-top {
     margin-top: 20px;
     margin-left: 30px;
     border-bottom: 2px solid grey;
   }
+
   .items {
     color: #308c3f;
     font-size: 30px;
@@ -74,10 +90,6 @@ const CartWrapper = styled.div`
     margin-right: 10px;
   }
   .close {
-    position: absolute;
-    left: 438px;
-    right: 0px;
-    top: 23px;
     font-size: 32px;
     color: black;
   }
@@ -123,5 +135,11 @@ const CartWrapper = styled.div`
   }
   .emp-bag {
     font-size: 200px;
+    @media (max-width: 576px) {
+      font-size: 40px;
+    }
+    @media (max-width: 768px) {
+      font-size: 100px;
+    }
   }
 `;

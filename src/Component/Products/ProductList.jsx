@@ -6,7 +6,7 @@ export const ProductList = () => {
   const { products } = useGlobalContext();
   console.log(products);
   return (
-    <section>
+    <section className="sec">
       <div className="container-fluid">
         <div className="row justify-content-md-center row-space-top">
           {products.map((product) => (

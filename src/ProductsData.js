@@ -64,12 +64,5 @@ const ProductsData = [
     productprice: 20,
     image: pImg8,
   },
-  {
-    id: 9,
-    productname: "lady finger",
-    productweight: 12,
-    productprice: 20,
-    image: pImg8,
-  },
 ];
 export default ProductsData;

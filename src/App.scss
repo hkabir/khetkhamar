@@ -195,7 +195,7 @@ section {
 }
 .cart-bag:hover {
   color: #ffff;
-  text-decoration: non !important;
+  text-decoration: none !important;
 }
 .cart-item {
   display: flex;
@@ -242,7 +242,7 @@ section {
   border-radius: 10px;
   border: 2px solid #f5f0f0;
   padding: 20px;
-  margin-left: 10px;
+
   margin-top: 10px;
 }
 .product-cart:hover {

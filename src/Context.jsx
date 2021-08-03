@@ -7,6 +7,7 @@ export const AppProvider = ({ children }) => {
   const [products, setProducts] = useState([...ProductsData]);
   const [openCart, setOpenCart] = useState(false);
   const [cartItems, setCartItems] = useState([]);
+  const [loading, setLoading] = useState(false);
   // const [count, setCount] = useState("");
 
   const [keyword, setKeyword] = useState("");
@@ -15,7 +16,7 @@ export const AppProvider = ({ children }) => {
     const result = products.filter((product) =>
       product.productname.includes(keyword)
     );
-    setProducts(result);
+    setTimeout(setLoading(false), setProducts(result), 9000);
   }, [keyword]);
 
   const handleCart = () => {
@@ -64,61 +65,39 @@ export const AppProvider = ({ children }) => {
   };
 
   const incrementItem = (id) => {
-    const tempCart = cartItems.find((item) => item.id === id);
     setCartItems((items) => {
-      const itemIndex = items.findIndex((currItem) => currItem.id === id);
-      if (itemIndex === -1) {
-        return [
-          ...items,
-          {
-            ...tempCart,
-            quantity: 1,
-          },
-        ];
-      } else {
-        return items.map((currItem) =>
-          currItem.id === id
-            ? {
-                ...tempCart,
-                quantity: parseInt(currItem.quantity) + 1,
-              }
-            : currItem
-        );
-      }
+      return items.map((currItem) =>
+        currItem.id === id
+          ? {
+              ...currItem,
+              quantity: parseInt(currItem.quantity) + 1,
+            }
+          : currItem
+      );
     });
   };
   const decrementItem = (id) => {
-    const tempCart = cartItems.find((item) => item.id === id);
     setCartItems((items) => {
-      const itemIndex = items.findIndex((currItem) => currItem.id === id);
-      if (itemIndex === -1) {
-        return [
-          ...items,
-          {
-            ...tempCart,
-            quantity: 1,
-          },
-        ];
-      } else {
-        return items
-          .map((currItem) =>
-            currItem.id === id
-              ? {
-                  ...currItem,
-                  quantity: parseInt(currItem.quantity) - 1,
-                }
-              : currItem
-          )
-          .filter((item) => {
-            return item.quantity !== 0;
-          });
-      }
+      return items
+        .map((currItem) =>
+          currItem.id === id
+            ? {
+                ...currItem,
+                quantity: parseInt(currItem.quantity) - 1,
+              }
+            : currItem
+        )
+        .filter((item) => {
+          return item.quantity !== 0;
+        });
     });
   };
 
   return (
     <AppContext.Provider
       value={{
+        loading: loading,
+        setLoading: setLoading,
         products: products,
         setKeyword: setKeyword,
         addToCart: addToCart,
