@@ -1,6 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import logo from "../asset/images/logo.jpg";
+import axios from "axios";
 export const NavBar = () => {
+  const [category, setCategory] = useState([]);
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = () => {
+    axios
+      .get("http://api.khetkhamar.org/api/v2/categories")
+      .then(({ data: { data } }) => {
+        console.log("category", data);
+        setCategory(data);
+      });
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <a className="navbar-brand" href="#">
@@ -51,16 +67,13 @@ export const NavBar = () => {
               Categories
             </a>
             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a className="dropdown-item" href="#">
-                Action
-              </a>
-              <a className="dropdown-item" href="#">
-                Another action
-              </a>
-              <div className="dropdown-divider"></div>
-              <a className="dropdown-item" href="#">
-                Something else here
-              </a>
+              {category.map((item) => {
+                return (
+                  <a className="dropdown-item" href="#" key={item.id}>
+                    {item.name}
+                  </a>
+                );
+              })}
             </div>
           </li>
           <li className="nav-item">
