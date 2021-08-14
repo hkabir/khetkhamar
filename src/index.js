@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { AppProvider } from "./Context";
+import { AppProvider } from "./reducer/cartContext";
+//import { AppProviderP } from "./reducer/productsContext";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 

@@ -1,11 +1,10 @@
 import React from "react";
-import { FaCartArrowDown } from "react-icons/fa";
-
+import logo from "../asset/images/logo.jpg";
 export const NavBar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <a className="navbar-brand" href="#">
-        Khetkhamar
+        <img src={logo} className="logo" />
       </a>
       <button
         className="navbar-toggler"
@@ -18,9 +17,27 @@ export const NavBar = () => {
       >
         <span className="navbar-toggler-icon"></span>
       </button>
-
+      <div id="custom-search-input">
+        <div className="input-group col-md-12">
+          <input
+            type="text"
+            className="search-query form-control "
+            placeholder="Search"
+          />
+          <span className="input-group-btn">
+            <button className="btn btn-danger" type="button">
+              <i className="fas fa-search"></i>
+            </button>
+          </span>
+        </div>
+      </div>
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto">
+          <li className="nav-item active">
+            <a className="nav-link" href="#">
+              Home <span className="sr-only">Home</span>
+            </a>
+          </li>
           <li className="nav-item dropdown">
             <a
               className="nav-link dropdown-toggle"
@@ -47,40 +64,26 @@ export const NavBar = () => {
             </div>
           </li>
           <li className="nav-item">
-            <a
-              className="nav-link disabled"
-              href="#"
-              tabindex="-1"
-              aria-disabled="true"
-            >
-              Disabled
-            </a>
-          </li>
-          <li className="nav-item active">
-            <a className="nav-link" href="#">
-              Home <span className="sr-only">(current)</span>
+            <a className="nav-link" href="#" tabindex="-1" aria-disabled="true">
+              Express
             </a>
           </li>
           <li className="nav-item">
             <a className="nav-link" href="#">
-              Link
+              Jumma Fiesta{" "}
+            </a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="#">
+              Ezelo
             </a>
           </li>
         </ul>
-        <form className="form-inline my-2 my-lg-0">
-          <input
-            className="form-control mr-sm-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button
-            className="btn btn-outline-success my-2 my-sm-0"
-            type="submit"
-          >
-            Search
-          </button>
-        </form>
+      </div>
+      <div>
+        <i className="fas fa-sync-alt"></i>
+        Compare
+        <i className="far fa-heart la-2x"></i> Wishlist
       </div>
     </nav>
   );

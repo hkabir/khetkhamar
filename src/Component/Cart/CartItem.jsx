@@ -1,15 +1,15 @@
 import React from "react";
 import { FaPlus, FaMinus } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
-import { useGlobalContext } from "../../Context";
+import { useGlobalContext } from "../../reducer/cartContext";
 
 export const CartItem = ({
   productname,
   productprice,
   image,
-  quantity,
   id,
   price,
+  quantity,
 }) => {
   const { removeItem, incrementItem, decrementItem } = useGlobalContext();
   return (

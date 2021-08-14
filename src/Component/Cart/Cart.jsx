@@ -1,20 +1,19 @@
 import React from "react";
 import styled from "styled-components";
-import { useGlobalContext } from "../../Context";
+import { useGlobalContext } from "../../reducer/cartContext";
 import { FaShoppingBag, FaWindowClose } from "react-icons/fa";
 import { CartItem } from "./CartItem";
 //import { Scrollbars } from "react-custom-scrollbars-2";
 
 export const Cart = () => {
-  const { openCart, cartClose, cartItems, totalPrice, totalItem } =
-    useGlobalContext();
+  const { openCart, cartClose, cartItems, totalAmount } = useGlobalContext();
 
   return (
     <CartWrapper show={openCart}>
       <div className="cart-top">
         <span className="items">
           <FaShoppingBag className="c-box" />
-          {totalItem} Items
+          {cartItems.length} Items
         </span>
         <i className="close" onClick={cartClose}>
           <FaWindowClose />
@@ -36,13 +35,17 @@ export const Cart = () => {
         )}
         {cartItems.length !== 0 &&
           cartItems.map((item) => (
-            <CartItem {...item} price={item.productprice * item.quantity} />
+            <CartItem
+              {...item}
+              price={item.productprice * item.quantity}
+              key={item.id}
+            />
           ))}
       </div>
 
       <div className="cart-checkout">
         <span className="c-text">checkout</span>
-        <span className="c-total">${totalPrice}</span>
+        <span className="c-total">${totalAmount}</span>
       </div>
     </CartWrapper>
   );
@@ -66,7 +69,7 @@ const CartWrapper = styled.div`
     width: 45%;
   }
   @media (max-width: 768px) {
-    width: 40%;
+    width: 60%;
   }
   @media (max-width: 557px) {
     width: 80%;

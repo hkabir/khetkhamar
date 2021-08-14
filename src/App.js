@@ -1,6 +1,6 @@
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle";
-import "./App.scss";
+import "./new.scss";
 import React from "react";
 //import { ProductList } from "./Component/Products/ProductList";
 
