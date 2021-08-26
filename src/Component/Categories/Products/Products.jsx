@@ -4,13 +4,14 @@ import { BiBasket } from "react-icons/bi";
 import { FaShoppingBag, FaPlus, FaMinus } from "react-icons/fa";
 
 export const Product = (props) => {
-  const { name, unit_price, unit, id } = props;
+  const { name, unit_price, unit, id, upload } = props;
 
   const product = {
     name,
     unit_price,
     unit,
     id,
+    upload,
   };
   const {
     addToCart,
@@ -30,7 +31,13 @@ export const Product = (props) => {
   return (
     <>
       <div className="col-lg-3 col-6 product-cart" key={id}>
-        <img src={""} alt="" className="packshot" />
+        <img
+          src={`https://khetkhamar.org/public/${
+            upload ? upload.file_name : ""
+          }`}
+          alt=""
+          className="packshot"
+        />
         <h3 className="product-title">{name}</h3>
         <span className="product-weight">{unit}</span>
         <span className="product-price">${unit_price}</span>

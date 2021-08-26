@@ -17,6 +17,7 @@ export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, initialState);
 
   const [category, setCategory] = useState([]);
+  const [item, setItem] = useState();
 
   useEffect(() => {
     getData();
@@ -37,6 +38,20 @@ export const AppProvider = ({ children }) => {
       )
       .catch((error) => {});
   };
+
+  const caItem = (id) => {
+    const params = new URLSearchParams(window.location.search);
+    params.set("q", `${id}`);
+    params.toString();
+    window.history.replaceState(
+      {},
+      "",
+      `${window.location.pathname}?${params.toString()}`
+    );
+    setItem(id);
+    //console.log("par", id, params);
+  };
+  //console.log("it", item);
 
   useEffect(() => {
     dispatch({ type: "GET_TOTAL" });
@@ -82,6 +97,8 @@ export const AppProvider = ({ children }) => {
     <AppContext.Provider
       value={{
         category,
+        caItem,
+        item,
 
         ...state,
         removeItem,

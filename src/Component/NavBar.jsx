@@ -3,7 +3,7 @@ import logo from "../asset/images/logo.jpg";
 
 import { useGlobalContext } from "../reducer/cartContext";
 export const NavBar = () => {
-  const { category } = useGlobalContext();
+  const { category, caItem } = useGlobalContext();
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -57,7 +57,12 @@ export const NavBar = () => {
             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
               {category.map((item) => {
                 return (
-                  <a className="dropdown-item" href="#" key={item.id}>
+                  <a
+                    className="dropdown-item"
+                    href="#"
+                    key={item.id}
+                    onClick={() => caItem(item.id)}
+                  >
                     {item.name}
                   </a>
                 );
