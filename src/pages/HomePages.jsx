@@ -11,7 +11,6 @@ export const HomePages = () => {
     <>
       <NavBar />
       <Cart />
-
       <CategoriesPRoduct />
     </>
   );

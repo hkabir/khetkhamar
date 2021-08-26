@@ -45,9 +45,9 @@ export const cartReducer = (state, action) => {
     case "GET_TOTAL":
       let { totalAmount } = state.cartItems.reduce(
         (accum, curVal) => {
-          let { productprice, quantity } = curVal;
+          let { unit_price, quantity } = curVal;
 
-          let updatedTotalAmount = productprice * quantity;
+          let updatedTotalAmount = unit_price * quantity;
           accum.totalAmount += updatedTotalAmount;
           return accum;
         },

@@ -1,6 +1,6 @@
 import React, { useState, useContext, useReducer, useEffect } from "react";
-import ProductsData from "../ProductsData";
-
+//import ProductsData from "../ProductsData";
+import axios from "axios";
 import { cartReducer } from "./cartReducer";
 
 const AppContext = React.createContext();
@@ -12,10 +12,31 @@ const initialState = {
 };
 
 export const AppProvider = ({ children }) => {
-  const [products] = useState(ProductsData);
   const [openCart, setOpenCart] = useState(false);
 
   const [state, dispatch] = useReducer(cartReducer, initialState);
+
+  const [category, setCategory] = useState([]);
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = () => {
+    axios
+      .get(" https://api.khetkhamar.org/api/react/categories?page=1")
+      .then(
+        ({
+          data: {
+            data: { data },
+          },
+        }) => {
+          //console.log("category", data);
+          setCategory(data);
+        }
+      )
+      .catch((error) => {});
+  };
 
   useEffect(() => {
     dispatch({ type: "GET_TOTAL" });
@@ -60,7 +81,8 @@ export const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
-        products,
+        category,
+
         ...state,
         removeItem,
         decrementItem,

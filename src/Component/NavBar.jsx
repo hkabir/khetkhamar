@@ -1,21 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import logo from "../asset/images/logo.jpg";
-import axios from "axios";
+
+import { useGlobalContext } from "../reducer/cartContext";
 export const NavBar = () => {
-  const [category, setCategory] = useState([]);
-
-  useEffect(() => {
-    getData();
-  }, []);
-
-  const getData = () => {
-    axios
-      .get("http://api.khetkhamar.org/api/v2/categories")
-      .then(({ data: { data } }) => {
-        console.log("category", data);
-        setCategory(data);
-      });
-  };
+  const { category } = useGlobalContext();
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">

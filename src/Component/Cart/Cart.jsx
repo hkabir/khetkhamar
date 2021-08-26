@@ -37,7 +37,7 @@ export const Cart = () => {
           cartItems.map((item) => (
             <CartItem
               {...item}
-              price={item.productprice * item.quantity}
+              price={item.unit_price * item.quantity}
               key={item.id}
             />
           ))}

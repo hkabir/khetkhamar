@@ -4,13 +4,13 @@ import { BiBasket } from "react-icons/bi";
 import { FaShoppingBag, FaPlus, FaMinus } from "react-icons/fa";
 
 export const Product = (props) => {
-  const { productname, productprice, productweight, id, image } = props;
+  const { name, unit_price, unit, id } = props;
+
   const product = {
-    productname,
-    productprice,
-    productweight,
+    name,
+    unit_price,
+    unit,
     id,
-    image,
   };
   const {
     addToCart,
@@ -22,18 +22,18 @@ export const Product = (props) => {
     decrementItem,
     incrementItem,
   } = useGlobalContext();
+  //console.log(upload.file_name);
 
-  //console.log(products);
   const isInCart = (id) => {
     return !!cartItems.find((item) => item.id === id);
   };
   return (
     <>
       <div className="col-lg-3 col-6 product-cart" key={id}>
-        <img src={image} alt="" className="packshot" />
-        <h3 className="product-title">{productname}</h3>
-        <span className="product-weight">{productweight} pc(s)</span>
-        <span className="product-price">${productprice}</span>
+        <img src={""} alt="" className="packshot" />
+        <h3 className="product-title">{name}</h3>
+        <span className="product-weight">{unit}</span>
+        <span className="product-price">${unit_price}</span>
         {isInCart(id) && (
           <div className="product-plus-minus">
             <FaPlus
