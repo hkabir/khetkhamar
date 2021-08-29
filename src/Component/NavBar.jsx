@@ -1,15 +1,16 @@
 import React from "react";
 import logo from "../asset/images/logo.jpg";
+import { Link } from "react-router-dom";
 
 import { useGlobalContext } from "../reducer/cartContext";
 export const NavBar = () => {
   const { category, caItem } = useGlobalContext();
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <a className="navbar-brand" href="#">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light top-fixed">
+      <Link className="navbar-brand" to="/">
         <img src={logo} className="logo" />
-      </a>
+      </Link>
       <button
         className="navbar-toggler"
         type="button"
@@ -38,9 +39,10 @@ export const NavBar = () => {
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto">
           <li className="nav-item active">
-            <a className="nav-link" href="#">
-              Home <span className="sr-only">Home</span>
-            </a>
+            <Link className="nav-link" to="/">
+              Home
+              <span className="sr-only">Home</span>
+            </Link>
           </li>
           <li className="nav-item dropdown">
             <a

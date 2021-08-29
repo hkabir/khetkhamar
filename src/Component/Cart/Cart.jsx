@@ -6,7 +6,8 @@ import { CartItem } from "./CartItem";
 //import { Scrollbars } from "react-custom-scrollbars-2";
 
 export const Cart = () => {
-  const { openCart, cartClose, cartItems, totalAmount } = useGlobalContext();
+  const { openCart, cartClose, cartItems, totalAmount, openModal } =
+    useGlobalContext();
 
   return (
     <CartWrapper show={openCart}>
@@ -43,10 +44,16 @@ export const Cart = () => {
           ))}
       </div>
 
-      <div className="cart-checkout">
-        <span className="c-text">checkout</span>
-        <span className="c-total">${totalAmount}</span>
-      </div>
+      {cartItems.length !== 0 ? (
+        <div className="cart-checkout">
+          <span className="c-text" onClick={openModal}>
+            checkout
+          </span>
+          <span className="c-total">${totalAmount}</span>
+        </div>
+      ) : (
+        ""
+      )}
     </CartWrapper>
   );
 };
@@ -107,6 +114,7 @@ const CartWrapper = styled.div`
     border-radius: 10px;
     margin-left: 50px;
     margin-top: 20px;
+    cursor: pointer;
   }
   .c-text {
     color: #ffff;
@@ -120,7 +128,7 @@ const CartWrapper = styled.div`
     color: black;
     width: 70px;
     margin-right: 7px;
-    font-size: 23px;
+    font-size: 15px;
     padding: 5px;
     border-radius: 10px;
     height: 40px;

@@ -6,7 +6,7 @@ import { useGlobalContext } from "../../reducer/cartContext";
 export const CartItem = ({
   name,
   unit_price,
-  image,
+
   id,
   price,
   quantity,

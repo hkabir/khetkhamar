@@ -1,5 +1,5 @@
 import React, { useState, useContext, useReducer, useEffect } from "react";
-//import ProductsData from "../ProductsData";
+
 import axios from "axios";
 import { cartReducer } from "./cartReducer";
 
@@ -18,6 +18,7 @@ export const AppProvider = ({ children }) => {
 
   const [category, setCategory] = useState([]);
   const [item, setItem] = useState();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     getData();
@@ -36,7 +37,9 @@ export const AppProvider = ({ children }) => {
           setCategory(data);
         }
       )
-      .catch((error) => {});
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const caItem = (id) => {
@@ -65,6 +68,14 @@ export const AppProvider = ({ children }) => {
   };
   const cartClose = () => {
     setOpenCart(false);
+  };
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
   const addToCart = (product) => {
     dispatch({
@@ -99,7 +110,9 @@ export const AppProvider = ({ children }) => {
         category,
         caItem,
         item,
-
+        isModalOpen,
+        openModal,
+        closeModal,
         ...state,
         removeItem,
         decrementItem,

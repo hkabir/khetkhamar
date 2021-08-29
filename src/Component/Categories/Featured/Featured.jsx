@@ -8,7 +8,7 @@ export const Featured = () => {
         {fData.map((item) => {
           const { image } = item;
           return (
-            <div className="col-lg-4">
+            <div className="col-lg-4" key={item.id}>
               <img src={image} alt="" class="featured-image"></img>
             </div>
           );

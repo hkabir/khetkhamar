@@ -5,12 +5,15 @@ import { CategoriesPRoduct } from "../Component/Categories/CategoriesPRoduct";
 //import { Product } from "../Component/Products/Products";
 import { Cart } from "../Component/Cart/Cart";
 //import { ProductList } from "../Component/Categories/Products/ProductList";
+import { LoginForm } from "../Component/LoginForm";
 
 export const HomePages = () => {
   return (
     <>
       <NavBar />
+
       <Cart />
+      <LoginForm />
       <CategoriesPRoduct />
     </>
   );

@@ -32,14 +32,16 @@ export const ProductList = () => {
           setProducts(data);
         }
       )
-      .catch((error) => {});
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
     <div className="container-fluid">
       <div className="row justify-content-md-center row-space-top">
         {products.map((product) => (
-          <Product {...product} />
+          <Product {...product} key={product.id} />
         ))}
       </div>
     </div>
