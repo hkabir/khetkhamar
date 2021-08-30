@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import { useGlobalContext } from "../reducer/cartContext";
-//import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { reactLocalStorage } from "reactjs-localstorage";
+//import { data } from "jquery";
 
 export const LoginForm = () => {
   const { isModalOpen, closeModal, setToken } = useGlobalContext();
   const [id, setId] = useState(null);
   const [viewOtpForm, setViewOtpForm] = useState(false);
+  let history = useHistory();
 
   const {
     register,
@@ -47,13 +49,12 @@ export const LoginForm = () => {
         const temToken = reactLocalStorage.getObject("token");
         // console.log("token", temToken);
         setToken(temToken);
-
-        alert(data.message);
+        history.push("./billingpage");
+        // alert(data.message);
       })
       .catch((error) => {
         console.log(error);
       });
-    reset();
   };
 
   return (

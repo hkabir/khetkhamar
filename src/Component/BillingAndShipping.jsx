@@ -1,61 +1,61 @@
 import React from "react";
 import { useGlobalContext } from "../reducer/cartContext";
+import { useForm } from "react-hook-form";
+import { useHistory } from "react-router-dom";
 
 export const BillingAndShipping = () => {
-  const { cartItems, openModal } = useGlobalContext();
+  let history = useHistory();
+  const { setFormData } = useGlobalContext();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => {
+    setFormData(data);
+
+    console.log(data);
+    history.push("./checkoutpage");
+  };
   return (
     <div>
       <main>
         <div className="container">
-          <div className="row justify-content-md-center row-space-top">
-            <div className="checkout">
-              <h1>checkout</h1>
-
-              <div className="address ">
+          <div className="row  row-space-top">
+            <div className="col-lg-6 col-md-12 col-sm-12">
+              <div className="bill">
                 <h1>Billing address</h1>
-                <div className="sel-address">
-                  <i class="fas fa-map-marker-alt"></i>
-                  <span>Select a delivery Address</span>
-                </div>
-                <div className="ex-addres">
-                  <i class="fas fa-check-circle"></i>
-                  <p>{""}</p>
-                  <span>edit</span>
-                </div>
-                <div className="new-address">
-                  <i class="fas fa-plus" onClick={openModal}></i>
-                  <p>New Address</p>
-                </div>
-              </div>
 
-              <div className="address ">
-                <h1>shipping address</h1>
-                <div className="sel-address">
-                  <i class="fas fa-map-marker-alt"></i>
-                  <span>Select a delivery Address</span>
-                </div>
-                <div className="ex-addres">
-                  <i class="fas fa-check-circle"></i>
-                  <p>{""}</p>
-                  <span>edit</span>
-                </div>
-                <div className="new-address">
-                  <i class="fas fa-plus" onClick={openModal}></i>
-                  <p>New Address</p>
-                </div>
-              </div>
-            </div>
-            <div className="justify-content-md-end row-space-top">
-              <div className="order">
-                <h1>Your order</h1>
-                {cartItems.map((item) => {
-                  return (
-                    <div className="p-price" key={item.id}>
-                      <span className="cart-pname">{item.name}</span>
-                      <span className="cart-pprice">{item.unit_price}</span>
-                    </div>
-                  );
-                })}
+                <form onSubmit={handleSubmit(onSubmit)}>
+                  <input
+                    name="address"
+                    placeholder="address"
+                    {...register("address", { required: true })}
+                  />
+                  <input
+                    name="country"
+                    placeholder="country"
+                    {...register("country", { required: true })}
+                  />
+                  <input
+                    name="city"
+                    placeholder="city"
+                    {...register("city", { required: true })}
+                  />
+                  <input
+                    name="postal_code"
+                    placeholder="postal_code"
+                    {...register("postal_code", { required: true })}
+                  />
+                  <input
+                    name="phone"
+                    placeholder="phone"
+                    {...register("phone", { required: true })}
+                  />
+                  <button id="sub2" type="submit" className="btn btn-danger ">
+                    save
+                  </button>
+                </form>
               </div>
             </div>
           </div>

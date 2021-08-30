@@ -20,7 +20,8 @@ export const AppProvider = ({ children }) => {
   const [item, setItem] = useState();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [token, setToken] = useState("");
-  //console.log("tk", token);
+  const [formData, setFormData] = useState();
+  console.log("tk", token);
 
   useEffect(() => {
     getData();
@@ -109,6 +110,8 @@ export const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
+        setFormData,
+        formData,
         token,
         setToken,
         category,

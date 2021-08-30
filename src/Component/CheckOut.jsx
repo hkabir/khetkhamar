@@ -2,7 +2,7 @@ import React from "react";
 import { useGlobalContext } from "../reducer/cartContext";
 
 export const CheckOut = () => {
-  const { cartItems, openModal } = useGlobalContext();
+  const { cartItems, formData, totalAmount } = useGlobalContext();
   console.log("carti", cartItems);
 
   return (
@@ -14,36 +14,27 @@ export const CheckOut = () => {
               <h1>checkout</h1>
 
               <div className="address ">
-                <h1>Billing address</h1>
+                <h1>address</h1>
                 <div className="sel-address">
-                  <i class="fas fa-map-marker-alt"></i>
+                  <i className="fas fa-map-marker-alt"></i>
                   <span>Select a delivery Address</span>
                 </div>
                 <div className="ex-addres">
+                  <h1>billing address</h1>
                   <i class="fas fa-check-circle"></i>
-                  <p>{""}</p>
+                  <p>
+                    {formData ? formData.address : ""},
+                    {formData ? formData.country : "bangladesh"},
+                    {formData ? formData.city : "dhaka"},
+                    {formData ? formData.postal_code : "1234"}
+                  </p>
                   <span>edit</span>
-                </div>
-                <div className="new-address">
-                  <i class="fas fa-plus" onClick={openModal}></i>
-                  <p>New Address</p>
-                </div>
-              </div>
-
-              <div className="address ">
-                <h1>shipping address</h1>
-                <div className="sel-address">
-                  <i class="fas fa-map-marker-alt"></i>
-                  <span>Select a delivery Address</span>
                 </div>
                 <div className="ex-addres">
-                  <i class="fas fa-check-circle"></i>
-                  <p>{""}</p>
+                  <h1>shipping address</h1>
+                  <i className="fas fa-check-circle"></i>
+                  <p>partex guli rayer bazar, dhaka</p>
                   <span>edit</span>
-                </div>
-                <div className="new-address">
-                  <i class="fas fa-plus" onClick={openModal}></i>
-                  <p>New Address</p>
                 </div>
               </div>
             </div>
@@ -53,13 +44,25 @@ export const CheckOut = () => {
                 {cartItems.map((item) => {
                   return (
                     <div className="p-price" key={item.id}>
-                      <span className="cart-pname">{item.name}</span>
-                      <span className="cart-pprice">{item.unit_price}</span>
+                      <div className="cart-pname">
+                        <span>{item.name}</span>
+                      </div>
+
+                      <div className="cart-pprice">
+                        <span>{item.unit_price}</span>
+                      </div>
+
+                      <span>{item.quantity}</span>
+                      <span>{}</span>
                     </div>
                   );
                 })}
               </div>
             </div>
+          </div>
+          <div className="plc_order">
+            <button>Proceed</button>
+            <button>{totalAmount}</button>
           </div>
         </div>
       </main>

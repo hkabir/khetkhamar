@@ -453,6 +453,7 @@ section {
     margin-top: 15px;
   }
 }
+
 .close-modal-btn {
   position: absolute;
   top: 1rem;
@@ -462,6 +463,26 @@ section {
   border-color: transparent;
   color: #fff;
   cursor: pointer;
+}
+.bill {
+  background: #fff;
+  border-radius: var($radius);
+  height: 550px;
+  max-width: var($fixed-width);
+  text-align: center;
+  display: grid;
+
+  position: relative;
+  input {
+    width: 500px;
+    height: 40px;
+    margin-bottom: 10px;
+  }
+}
+#sub2 {
+  width: 25vw;
+  height: 5vh;
+  margin-left: 282px;
 }
 /***
 ================================
@@ -562,7 +583,16 @@ section {
           Body
 ================================
 **/
+.order {
+  width: 400px;
+  margin-left: 40px;
 
+  h1 {
+    text-align: center;
+    font-size: 25px;
+    color: #222;
+  }
+}
 /***
 ================================
           Mobile
