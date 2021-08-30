@@ -19,6 +19,8 @@ export const AppProvider = ({ children }) => {
   const [category, setCategory] = useState([]);
   const [item, setItem] = useState();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [token, setToken] = useState("");
+  //console.log("tk", token);
 
   useEffect(() => {
     getData();
@@ -107,6 +109,8 @@ export const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
+        token,
+        setToken,
         category,
         caItem,
         item,

@@ -1,12 +1,10 @@
 import React from "react";
 import { useGlobalContext } from "../reducer/cartContext";
 
-export const CheckOut = () => {
+export const BillingAndShipping = () => {
   const { cartItems, openModal } = useGlobalContext();
-  console.log("carti", cartItems);
-
   return (
-    <>
+    <div>
       <main>
         <div className="container">
           <div className="row justify-content-md-center row-space-top">
@@ -63,6 +61,6 @@ export const CheckOut = () => {
           </div>
         </div>
       </main>
-    </>
+    </div>
   );
 };

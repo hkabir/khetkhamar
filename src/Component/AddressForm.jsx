@@ -23,40 +23,35 @@ export const AddressForm = () => {
       >
         <div className="modal-container">
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="form-group">
-              <label className="col-form-label">Address_title:</label>
-              <input
-                type="text"
-                className={`form-control ${errors.name && "invalid"}`}
-                {...register("address", { required: "address is Required" })}
-              />
-              {errors.name && (
-                <small className="text-danger">{errors.name.message}</small>
-              )}
-            </div>
-            <div className="form-group">
-              <label className="col-form-label">Address:</label>
-              <textarea
-                className={`form-control ${errors.message && "invalid"}`}
-                {...register("message", {
-                  required: "Message is Required",
-                  minLength: {
-                    value: 10,
-                    message: "Minimum Required length is 10",
-                  },
-                  maxLength: {
-                    value: 50,
-                    message: "Maximum allowed length is 50 ",
-                  },
-                })}
-              ></textarea>
-              {errors.message && (
-                <small className="text-danger">{errors.message.message}</small>
-              )}
-            </div>
-            <button type="submit" className="btn btn-danger">
-              Save
-            </button>
+            <input
+              className="input-field"
+              ref="input"
+              type="text"
+              {...register("test", { required: true })}
+            />
+            box
+            <input name="name" placeholder="name" />
+            <input
+              name="street_address"
+              placeholder="Street Address"
+              {...register("test", { required: true })}
+            />
+            <input
+              name="city"
+              placeholder="City"
+              {...register("test", { required: true })}
+            />
+            <input
+              name="state"
+              placeholder="State"
+              {...register("test", { required: true })}
+            />
+            <input
+              name="zip_code"
+              placeholder="Zipcode"
+              {...register("test", { required: true })}
+            />
+            <button type="submit">Submit</button>
           </form>
           <button className="close-modal-btn" onClick={closeModal}>
             <FaTimes />

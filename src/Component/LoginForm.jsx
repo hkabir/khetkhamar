@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import { useGlobalContext } from "../reducer/cartContext";
 //import { Link } from "react-router-dom";
 import axios from "axios";
 import { useForm } from "react-hook-form";
+import { reactLocalStorage } from "reactjs-localstorage";
 
 export const LoginForm = () => {
-  const { isModalOpen, closeModal } = useGlobalContext();
+  const { isModalOpen, closeModal, setToken } = useGlobalContext();
   const [id, setId] = useState(null);
   const [viewOtpForm, setViewOtpForm] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -37,6 +39,15 @@ export const LoginForm = () => {
         code: data.code,
       })
       .then(({ data: { data } }) => {
+        //console.log(data.user);
+        reactLocalStorage.setObject("token", {
+          token: data.token,
+          user: data.user,
+        });
+        const temToken = reactLocalStorage.getObject("token");
+        // console.log("token", temToken);
+        setToken(temToken);
+
         alert(data.message);
       })
       .catch((error) => {

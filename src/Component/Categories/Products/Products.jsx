@@ -47,7 +47,7 @@ export const Product = (props) => {
               onClick={() => incrementItem(id)}
               className="btn-cart-plus"
             />
-            <span>{quantity}</span>
+
             <FaMinus
               onClick={() => decrementItem(id)}
               className="btn-cart-plus-minus"

@@ -478,12 +478,14 @@ section {
   }
 }
 .address {
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   border: 1px solid grey;
   width: 700px;
-  height: 200px;
+  height: 250px;
   align-items: center;
+  padding-bottom: 20px;
 }
 .sel-address {
   align-items: center;
@@ -498,6 +500,7 @@ section {
   background: #ccc;
   font-size: 14px;
   font-weight: 600;
+
   span {
     padding-left: 10px;
   }
