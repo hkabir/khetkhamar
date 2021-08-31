@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../asset/images/logo.jpg";
+import logo from "../asset/images/logo2.png";
 import { Link } from "react-router-dom";
 
 import { useGlobalContext } from "../reducer/cartContext";
