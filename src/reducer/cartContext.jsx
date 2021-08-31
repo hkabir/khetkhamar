@@ -21,7 +21,7 @@ export const AppProvider = ({ children }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [token, setToken] = useState("");
   const [formData, setFormData] = useState();
-  console.log("tk", token);
+  //console.log("tk", token);
 
   useEffect(() => {
     getData();
@@ -29,7 +29,7 @@ export const AppProvider = ({ children }) => {
 
   const getData = () => {
     axios
-      .get(" https://api.khetkhamar.org/api/react/categories?page=1")
+      .get(" https://test2.khetkhamar.org/api/react/categories?page=1")
       .then(
         ({
           data: {

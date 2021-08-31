@@ -1,9 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import { useGlobalContext } from "../reducer/cartContext";
+import axios from "axios";
 
 export const CheckOut = () => {
-  const { cartItems, formData, totalAmount } = useGlobalContext();
+  const [successs, setSuccesss] = useState(false);
+  const { cartItems, formData, totalAmount, token } = useGlobalContext();
+  const [shippinM] = useState({
+    shipping_message: "shipping_message",
+    shipping_cost: 30,
+  });
+  const temTotal = totalAmount + shippinM.shipping_cost;
   console.log("carti", cartItems);
+  console.log("to", token.token);
+
+  const placeOrder = () => {
+    axios
+      .post(
+        "https://test2.khetkhamar.org/api/react/place-order",
+        {
+          payment_type: "cash_on_delivery",
+          grand_total: temTotal,
+          shipping_cost: shippinM.shipping_cost,
+          shipping_message: shippinM.shipping_message,
+          address: formData.address,
+          city: formData.city,
+          postal_code: formData.postal_code,
+          country: formData.country,
+          cart: cartItems.map((item) => {
+            return {
+              seller_id: 10,
+              product_id: item.id,
+              price: item.unit_price,
+              quantity: item.quantity,
+            };
+          }),
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token.token}`,
+          },
+        }
+      )
+      .then(({ data: { data } }) => {
+        setSuccesss(true);
+        //alert("order place");
+      });
+  };
 
   return (
     <>
@@ -23,7 +65,7 @@ export const CheckOut = () => {
                   <h1>billing address</h1>
                   <i class="fas fa-check-circle"></i>
                   <p>
-                    {formData ? formData.address : ""},
+                    {formData ? formData.address : "rayer"},
                     {formData ? formData.country : "bangladesh"},
                     {formData ? formData.city : "dhaka"},
                     {formData ? formData.postal_code : "1234"}
@@ -42,27 +84,44 @@ export const CheckOut = () => {
               <div className="order">
                 <h1>Your order</h1>
                 {cartItems.map((item) => {
+                  const price = item.unit_price * item.quantity;
                   return (
-                    <div className="p-price" key={item.id}>
-                      <div className="cart-pname">
-                        <span>{item.name}</span>
-                      </div>
+                    <div className="check-cart" key={item.id}>
+                      <div className="cart-pname">{item.name}</div>
 
                       <div className="cart-pprice">
-                        <span>{item.unit_price}</span>
+                        {item.unit_price}X {item.quantity}
                       </div>
-
-                      <span>{item.quantity}</span>
-                      <span>{}</span>
+                      <div className="cart-pprice">{price}৳</div>
                     </div>
                   );
                 })}
+                <div className="delivery">
+                  <div className="cart-pname">delivery cost</div>
+                  <div className="cart-pprice">{shippinM.shipping_cost}৳</div>
+                </div>
+                <div className="check-total">{temTotal}৳</div>
               </div>
             </div>
           </div>
-          <div className="plc_order">
-            <button>Proceed</button>
-            <button>{totalAmount}</button>
+          <div className="plc_order btn-group mt-3">
+            <button
+              className="btn btn-danger"
+              type="submit"
+              onClick={placeOrder}
+            >
+              Place Order
+            </button>
+            <button className="btn btn-danger">TOTAL:{temTotal}৳</button>
+          </div>
+          <div>
+            {successs ? (
+              <button className="btn btn-primary mt-3">
+                order place thank you..
+              </button>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       </main>

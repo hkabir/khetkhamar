@@ -49,7 +49,7 @@ export const Cart = () => {
           <span className="c-text" onClick={openModal}>
             checkout
           </span>
-          <span className="c-total">${totalAmount}</span>
+          <span className="c-total">৳{totalAmount}</span>
         </div>
       ) : (
         ""
@@ -70,7 +70,7 @@ const CartWrapper = styled.div`
   transform: ${(props) => (props.show ? "translateX(0)" : "translateX(100%)")};
   transition: all 0.3s ease-in-out;
   @media (max-width: 1376px) {
-    width: 38%;
+    width: 28%;
   }
   @media (max-width: 990px) {
     width: 45%;
@@ -129,10 +129,12 @@ const CartWrapper = styled.div`
     width: 70px;
     margin-right: 7px;
     font-size: 15px;
-    padding: 5px;
+
     border-radius: 10px;
     height: 40px;
     text-align: center;
+    padding-top: 12px;
+    padding-left: 5px;
   }
   .emp-cart {
     display: flex;

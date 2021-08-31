@@ -2,29 +2,55 @@ import React from "react";
 import { useGlobalContext } from "../reducer/cartContext";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
+//import axios from "axios";
 
 export const BillingAndShipping = () => {
   let history = useHistory();
-  const { setFormData } = useGlobalContext();
+  const { setFormData, token } = useGlobalContext();
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
   const onSubmit = (data) => {
+    /*  axios
+      .post("https://api.khetkhamar.org/api/react/address/store", {
+        HEADERS: {
+          Authorization: token.token,
+        },
+
+        data: {
+          user_id: user.id,
+          address_type: "",
+          address: data.address,
+          country: data.country,
+          city: data.city,
+          postal_code: data.postal_code,
+          phone: data.phone,
+        },
+      })
+      .then((res) => {
+        console.log("form", res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });*/
+
     setFormData(data);
 
-    console.log(data);
+    //console.log(data);
     history.push("./checkoutpage");
+    reset();
   };
   return (
     <div>
       <main>
         <div className="container">
-          <div className="row  row-space-top">
+          <div className="row justify-content-md-center row-space-top">
             <div className="col-lg-6 col-md-12 col-sm-12">
               <div className="bill">
-                <h1>Billing address</h1>
+                <h1>Billing & Shippping address</h1>
 
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <input

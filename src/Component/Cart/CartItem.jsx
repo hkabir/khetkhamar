@@ -28,10 +28,10 @@ export const CartItem = ({
       <div className="p-price">
         <span className="cart-pname">{name}</span>
         <span className="cart-pprice">
-          ${unit_price} x {quantity}
+          ৳{unit_price} x {quantity}
         </span>
       </div>
-      <span className="cart-pprice">${price}</span>
+      <span className="cart-pprice">৳{price}</span>
       <i>
         <AiFillDelete onClick={() => removeItem(id)} />
       </i>

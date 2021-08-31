@@ -40,17 +40,16 @@ export const Product = (props) => {
         />
         <h3 className="product-title">{name}</h3>
         <span className="product-weight">{unit}</span>
-        <span className="product-price">${unit_price}</span>
+        <span className="product-price">৳{unit_price}</span>
         {isInCart(id) && (
           <div className="product-plus-minus">
-            <FaPlus
-              onClick={() => incrementItem(id)}
-              className="btn-cart-plus"
-            />
-
             <FaMinus
               onClick={() => decrementItem(id)}
               className="btn-cart-plus-minus"
+            />
+            <FaPlus
+              onClick={() => incrementItem(id)}
+              className="btn-cart-plus"
             />
             <span>{}</span>
           </div>
@@ -76,7 +75,7 @@ export const Product = (props) => {
           <FaShoppingBag className="c-box" />
           {cartItems.length} items
         </span>
-        <span className="total">${totalAmount}</span>
+        <span className="total">৳{totalAmount}</span>
       </div>
     </>
   );

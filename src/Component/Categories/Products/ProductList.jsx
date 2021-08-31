@@ -19,7 +19,7 @@ export const ProductList = () => {
   const getProducts = () => {
     axios
       .get(
-        `https://api.khetkhamar.org/api/react/products/category/${
+        `https://test2.khetkhamar.org/api/react/products/category/${
           item ? item : 122
         }?page=1`
       )

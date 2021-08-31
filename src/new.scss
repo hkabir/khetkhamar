@@ -21,6 +21,7 @@ $cart-button-background: #eeeeee;
 $cart-button-hover-background: #308c3f;
 $category-link-color: #444444;
 $category-link-hover-color: #666666;
+$primary-color: #00a07e;
 $clr-primary-1: hsl(205, 86%, 17%);
 $clr-primary-2: hsl(205, 77%, 27%);
 $clr-primary-3: hsl(205, 72%, 37%);
@@ -146,7 +147,7 @@ section {
   left: -28px;
   margin-bottom: 0;
   border-radius: 3px;
-  color: #d9230f;
+  color: #308c3f;
 }
 
 .search-query:focus + button {
@@ -193,8 +194,8 @@ section {
   background-color: rgb(0, 158, 127);
   color: rgb(255, 255, 255);
   font-size: 15px;
-  font-weight: 700;
-  border-radius: 200px;
+  border-radius: 20;
+  font-weight: 400;
   -webkit-box-pack: justify;
   justify-content: space-between;
   -webkit-box-align: center;
@@ -202,14 +203,17 @@ section {
   overflow: hidden;
   flex-shrink: 0;
   width: 50px;
-  height: 20px;
+  height: 25px;
+  cursor: pointer;
+  padding: 5px;
+  margin-top: 5px;
 }
 .btn-cart-plus-minus {
   background-color: rgb(0, 158, 127);
   color: rgb(255, 255, 255);
   font-size: 15px;
-  font-weight: 700;
-  border-radius: 200px;
+  font-weight: 400;
+  border-radius: 20;
   -webkit-box-pack: justify;
   justify-content: space-between;
   -webkit-box-align: center;
@@ -217,7 +221,10 @@ section {
   overflow: hidden;
   flex-shrink: 0;
   width: 50px;
-  height: 20px;
+  height: 25px;
+  cursor: pointer;
+  padding: 5px;
+  margin-top: 5px;
 }
 .btn-cart {
   border: 2px solid rgb(247, 247, 247);
@@ -272,7 +279,7 @@ section {
 .btn-cart {
   border: 2px solid #f7f7f7;
   background-color: #eeeeee;
-  color: #308c3f;
+  color: $primary-color;
   border-radius: 18px;
   height: 36px;
   padding-left: 17px;
@@ -347,24 +354,31 @@ section {
     width: 60px;
     height: 80px;
   }
-  .cart-pname {
-    font-size: 12px;
-    font-weight: 300;
-  }
-  .cart-pprice {
-    font-size: 13px;
-    font-weight: 400;
-    color: #308c3f;
-  }
+
   i {
     font-size: 18px;
-    color: red;
+    color: $cart-button-color;
+    text-align: right;
   }
   .p-price {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
+}
+.cart-pname {
+  font-size: 15px;
+  font-weight: 300;
+}
+.cart-pprice {
+  font-size: 15px;
+  font-weight: 400;
+  color: #308c3f;
+}
+.check-cart {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 .quantity {
   font-size: 18px;
@@ -482,7 +496,6 @@ section {
 #sub2 {
   width: 25vw;
   height: 5vh;
-  margin-left: 282px;
 }
 /***
 ================================
@@ -587,11 +600,25 @@ section {
   width: 400px;
   margin-left: 40px;
 
+  .check-total {
+    border-top: 2px solid gray;
+    margin-top: 20px;
+    text-align: end;
+    font-size: 20px;
+    font-weight: 700;
+    color: #308c3f;
+  }
   h1 {
     text-align: center;
     font-size: 25px;
     color: #222;
+    margin-bottom: 20px;
   }
+}
+.delivery {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 /***
 ================================
