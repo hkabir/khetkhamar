@@ -46,15 +46,17 @@ export const AppProvider = ({ children }) => {
       });
   };
 
+  useEffect(() => {
+    getUser();
+  }, []);
+
   const getUser = () => {
     axiosInstance
       .get("/me", { headers: { Authorization: `Bearer ${getToken.token}` } })
       .then((res) => {})
       .catch((error) => {});
   };
-  useEffect(() => {
-    getUser();
-  }, []);
+
   const caItem = (id) => {
     const params = new URLSearchParams(window.location.search);
     params.set("catagory", `${id}`);

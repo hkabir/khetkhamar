@@ -107,20 +107,16 @@ export const CheckOut = () => {
             </div>
           </div>
           <div className="plc_order btn-group mt-3">
-            <button
-              className="btn btn-danger"
-              type="submit"
-              onClick={placeOrder}
-            >
+            <button className="btn" type="submit" onClick={placeOrder}>
               Place Order
             </button>
-            <button className="btn btn-danger">TOTAL:{temTotal}৳</button>
+            <button id="placeBtn" className="btn">
+              TOTAL:{temTotal}৳
+            </button>
           </div>
           <div>
             {successs ? (
-              <button className="btn btn-primary mt-3">
-                order place thank you..
-              </button>
+              <button className="btn  mt-3">order place thank you..</button>
             ) : (
               ""
             )}

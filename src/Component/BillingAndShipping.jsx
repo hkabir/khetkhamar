@@ -84,7 +84,11 @@ export const BillingAndShipping = () => {
                     placeholder="phone"
                     {...register("phone", { required: true })}
                   />
-                  <button id="sub2" type="submit" className="btn btn-danger ">
+                  <button
+                    id="subbtn2"
+                    type="submit"
+                    className="btn btn-danger "
+                  >
                     save
                   </button>
                 </form>

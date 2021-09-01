@@ -82,6 +82,7 @@ const CartWrapper = styled.div`
   border-left: 3px solid #ffff;
   transform: ${(props) => (props.show ? "translateX(0)" : "translateX(100%)")};
   transition: all 0.3s ease-in-out;
+  overflow-y: auto;
   @media (max-width: 1376px) {
     width: 28%;
   }

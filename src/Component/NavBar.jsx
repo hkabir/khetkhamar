@@ -93,9 +93,8 @@ export const NavBar = () => {
         </ul>
       </div>
       <div>
-        <i className="fas fa-sync-alt"></i>
-        Compare
-        <i className="far fa-heart la-2x"></i> Wishlist
+        <i className="fas fa-sync-alt ml-2"></i> Compare
+        <i className="far fa-heart la-2x mr-1"></i> Wishlist
       </div>
     </nav>
   );

@@ -1,5 +1,6 @@
 {
   "name": "khetkhamar",
+  "homepage": "https://fast.khetkhamar.org",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

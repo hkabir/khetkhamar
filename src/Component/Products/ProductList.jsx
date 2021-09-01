@@ -9,7 +9,7 @@ import { useGlobalContext } from "../../reducer/cartContext";
 export const ProductList = () => {
   const [products, setProducts] = useState([]);
 
-  const { item } = useGlobalContext();
+  const { item, category } = useGlobalContext();
 
   useEffect(() => {
     getProducts();
