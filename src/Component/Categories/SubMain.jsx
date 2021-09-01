@@ -1,7 +1,7 @@
 import React from "react";
-import { Banner } from "./Banner";
-import { Featured } from "./Featured/Featured";
-import { ProductList } from "./Products/ProductList";
+import { Banner } from "../Banner";
+import { Featured } from "../Featured/Featured";
+import { ProductList } from "../Products/ProductList";
 
 export const SubMain = () => {
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import { useGlobalContext } from "../../../reducer/cartContext";
+import { useGlobalContext } from "../../reducer/cartContext";
 import { BiBasket } from "react-icons/bi";
 import { FaShoppingBag, FaPlus, FaMinus } from "react-icons/fa";
 
@@ -19,7 +19,7 @@ export const Product = (props) => {
     totalAmount,
 
     cartItems,
-    quantity,
+
     decrementItem,
     incrementItem,
   } = useGlobalContext();
@@ -51,7 +51,6 @@ export const Product = (props) => {
               onClick={() => incrementItem(id)}
               className="btn-cart-plus"
             />
-            <span>{}</span>
           </div>
         )}
 

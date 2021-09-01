@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useGlobalContext } from "../../reducer/cartContext";
-//import { Link } from "react-router-dom";
+//import { NavLink } from "react-router-dom";
 
 export const SideBar = () => {
   const { category, caItem } = useGlobalContext();

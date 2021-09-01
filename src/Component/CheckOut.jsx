@@ -1,22 +1,24 @@
 import React, { useState } from "react";
 import { useGlobalContext } from "../reducer/cartContext";
-import axios from "axios";
+//import axios from "axios";
+import axiosInstance from "../helper/axios";
 
 export const CheckOut = () => {
   const [successs, setSuccesss] = useState(false);
-  const { cartItems, formData, totalAmount, token } = useGlobalContext();
+  const { cartItems, formData, totalAmount, getToken } = useGlobalContext();
   const [shippinM] = useState({
     shipping_message: "shipping_message",
     shipping_cost: 30,
   });
+  console.log("to", getToken);
   const temTotal = totalAmount + shippinM.shipping_cost;
-  console.log("carti", cartItems);
-  console.log("to", token.token);
+  //console.log("carti", cartItems);
 
+  //*Order place*
   const placeOrder = () => {
-    axios
+    axiosInstance
       .post(
-        "https://test2.khetkhamar.org/api/react/place-order",
+        "/place-order",
         {
           payment_type: "cash_on_delivery",
           grand_total: temTotal,
@@ -37,7 +39,7 @@ export const CheckOut = () => {
         },
         {
           headers: {
-            Authorization: `Bearer ${token.token}`,
+            Authorization: `Bearer ${getToken.token}`,
           },
         }
       )

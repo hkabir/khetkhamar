@@ -3,11 +3,14 @@ import styled from "styled-components";
 import { useGlobalContext } from "../../reducer/cartContext";
 import { FaShoppingBag, FaWindowClose } from "react-icons/fa";
 import { CartItem } from "./CartItem";
+import { useHistory, Link } from "react-router-dom";
 //import { Scrollbars } from "react-custom-scrollbars-2";
 
 export const Cart = () => {
-  const { openCart, cartClose, cartItems, totalAmount, openModal } =
+  const { openCart, cartClose, cartItems, totalAmount, openModal, getToken } =
     useGlobalContext();
+  console.log(getToken);
+  //const history = useHistory();
 
   return (
     <CartWrapper show={openCart}>
@@ -46,9 +49,19 @@ export const Cart = () => {
 
       {cartItems.length !== 0 ? (
         <div className="cart-checkout">
-          <span className="c-text" onClick={openModal}>
-            checkout
-          </span>
+          {getToken === {} ? (
+            <Link
+              to="./checkoutpage"
+              className="c-text"
+              // onClick={() => history.push("./billingpage")}
+            >
+              checkout
+            </Link>
+          ) : (
+            <span className="c-text" onClick={openModal}>
+              checkout
+            </span>
+          )}
           <span className="c-total">৳{totalAmount}</span>
         </div>
       ) : (

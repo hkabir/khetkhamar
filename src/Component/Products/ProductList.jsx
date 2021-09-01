@@ -1,28 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { Product } from "./Products";
-import axios from "axios";
+//import axios from "axios";
+import axiosInstance from "../../helper/axios";
 //import { useParams } from "react-router-dom";
-import { useGlobalContext } from "../../../reducer/cartContext";
+import { useGlobalContext } from "../../reducer/cartContext";
 //import { CartItem } from "../Cart/CartItem";
 
 export const ProductList = () => {
   const [products, setProducts] = useState([]);
-  //const { category_id } = useParams();
+
   const { item } = useGlobalContext();
-  //console.log("item", item);
-  // console.log("id", category_id);
 
   useEffect(() => {
     getProducts();
   }, [item]);
 
   const getProducts = () => {
-    axios
-      .get(
-        `https://test2.khetkhamar.org/api/react/products/category/${
-          item ? item : 122
-        }?page=1`
-      )
+    axiosInstance
+      .get(`/products/category/${item ? item : 122}?page=1`)
       .then(
         ({
           data: {

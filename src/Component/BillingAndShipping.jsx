@@ -2,40 +2,46 @@ import React from "react";
 import { useGlobalContext } from "../reducer/cartContext";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
+import axiosInstance from "../helper/axios";
 //import axios from "axios";
 
 export const BillingAndShipping = () => {
   let history = useHistory();
-  const { setFormData, token } = useGlobalContext();
+  const { setFormData, getToken } = useGlobalContext();
+  const { user } = getToken;
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
   } = useForm();
-  const onSubmit = (data) => {
-    /*  axios
-      .post("https://api.khetkhamar.org/api/react/address/store", {
-        HEADERS: {
-          Authorization: token.token,
-        },
 
-        data: {
+  ///Store Authenticated user's shipping + billing address.
+  const onSubmit = (data) => {
+    axiosInstance
+      .post(
+        "/address/store",
+        {
           user_id: user.id,
-          address_type: "",
+          address_type: "cash_on_delivery",
           address: data.address,
           country: data.country,
           city: data.city,
           postal_code: data.postal_code,
           phone: data.phone,
         },
-      })
+        {
+          headers: {
+            Authorization: `Bearer ${getToken.token}`,
+          },
+        }
+      )
       .then((res) => {
         console.log("form", res);
       })
       .catch((error) => {
         console.log(error);
-      });*/
+      });
 
     setFormData(data);
 

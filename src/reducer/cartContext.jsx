@@ -1,7 +1,8 @@
 import React, { useState, useContext, useReducer, useEffect } from "react";
-
-import axios from "axios";
+import axiosInstance from "../helper/axios";
+//import axios from "axios";
 import { cartReducer } from "./cartReducer";
+import { reactLocalStorage } from "reactjs-localstorage";
 
 const AppContext = React.createContext();
 
@@ -19,7 +20,7 @@ export const AppProvider = ({ children }) => {
   const [category, setCategory] = useState([]);
   const [item, setItem] = useState();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [token, setToken] = useState("");
+  const [me, setMe] = useState();
   const [formData, setFormData] = useState();
   //console.log("tk", token);
 
@@ -28,8 +29,8 @@ export const AppProvider = ({ children }) => {
   }, []);
 
   const getData = () => {
-    axios
-      .get(" https://test2.khetkhamar.org/api/react/categories?page=1")
+    axiosInstance
+      .get("/categories?page=1")
       .then(
         ({
           data: {
@@ -45,9 +46,18 @@ export const AppProvider = ({ children }) => {
       });
   };
 
+  const getUser = () => {
+    axiosInstance
+      .get("/me", { headers: { Authorization: `Bearer ${getToken.token}` } })
+      .then((res) => {})
+      .catch((error) => {});
+  };
+  useEffect(() => {
+    getUser();
+  }, []);
   const caItem = (id) => {
     const params = new URLSearchParams(window.location.search);
-    params.set("q", `${id}`);
+    params.set("catagory", `${id}`);
     params.toString();
     window.history.replaceState(
       {},
@@ -58,7 +68,8 @@ export const AppProvider = ({ children }) => {
     //console.log("par", id, params);
   };
   //console.log("it", item);
-
+  const getToken = reactLocalStorage.getObject("token");
+  //console.log("token", getToken);
   useEffect(() => {
     dispatch({ type: "GET_TOTAL" });
   }, [state.cartItems]);
@@ -112,8 +123,8 @@ export const AppProvider = ({ children }) => {
       value={{
         setFormData,
         formData,
-        token,
-        setToken,
+        getToken,
+        // setToken,
         category,
         caItem,
         item,

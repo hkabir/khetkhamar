@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import { useGlobalContext } from "../reducer/cartContext";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
+import axiosInstance from "../helper/axios";
 import { useForm } from "react-hook-form";
 import { reactLocalStorage } from "reactjs-localstorage";
-//import { data } from "jquery";
 
 export const LoginForm = () => {
-  const { isModalOpen, closeModal, setToken } = useGlobalContext();
+  const { isModalOpen, closeModal } = useGlobalContext();
   const [id, setId] = useState(null);
   const [viewOtpForm, setViewOtpForm] = useState(false);
   let history = useHistory();
@@ -20,8 +19,8 @@ export const LoginForm = () => {
     formState: { errors },
   } = useForm();
   const onSubmitPhone = (data) => {
-    axios
-      .post("https://test2.khetkhamar.org/api/react/auth/login-using-otp", data)
+    axiosInstance
+      .post("/auth/login-using-otp", data)
       .then(({ data: { data } }) => {
         console.log("data", data);
         setId(data.user_id);
@@ -35,20 +34,17 @@ export const LoginForm = () => {
     reset();
   };
   const onSubmitOtp = (data) => {
-    axios
-      .post("https://test2.khetkhamar.org/api/react/auth/otp-verify", {
+    axiosInstance
+      .post("/auth/otp-verify", {
         user_id: id,
         code: data.code,
       })
       .then(({ data: { data } }) => {
-        //console.log(data.user);
         reactLocalStorage.setObject("token", {
           token: data.token,
           user: data.user,
         });
-        const temToken = reactLocalStorage.getObject("token");
-        // console.log("token", temToken);
-        setToken(temToken);
+
         history.push("./billingpage");
         // alert(data.message);
       })

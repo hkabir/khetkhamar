@@ -9,7 +9,7 @@ export const NavBar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light top-fixed">
       <Link className="navbar-brand" to="/">
-        <img src={logo} className="logo" />
+        <img src={logo} className="logo" alt="logo" />
       </Link>
       <button
         className="navbar-toggler"
@@ -47,7 +47,7 @@ export const NavBar = () => {
           <li className="nav-item dropdown">
             <a
               className="nav-link dropdown-toggle"
-              href="#"
+              href="cat"
               id="navbarDropdown"
               role="button"
               data-toggle="dropdown"
@@ -61,7 +61,6 @@ export const NavBar = () => {
                 return (
                   <a
                     className="dropdown-item"
-                    href="#"
                     key={item.id}
                     onClick={() => caItem(item.id)}
                   >
@@ -72,17 +71,22 @@ export const NavBar = () => {
             </div>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#" tabindex="-1" aria-disabled="true">
+            <a
+              className="nav-link"
+              href="ta"
+              tabindex="-1"
+              aria-disabled="true"
+            >
               Express
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
+            <a className="nav-link" href="cat">
               Jumma Fiesta{" "}
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
+            <a className="nav-link" href="cat">
               Ezelo
             </a>
           </li>
