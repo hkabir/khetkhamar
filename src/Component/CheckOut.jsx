@@ -16,34 +16,66 @@ export const CheckOut = () => {
   console.log("to", formData);
   const temTotal = totalAmount + shippinM.shipping_cost;
 
-  // URL : https://api.khetkhamar.org/api/react/addresses/{shipping_address || billing_address}/{userId}
-  // const getData = async () => {
-  //   await axiosInstance
-  //     .get(`/addresses/billing_address/3445`, {
-  //       headers: {
-  //         Authorization: `Bearer ${getToken.token}`,
-  //       },
-  //     })
-  //     .then(
-  //       ({
-  //         data: {
-  //           data: { data },
-  //         },
-  //       }) => {
-  //         setFormData(data);
-  //         //console.log("get", data);
-  //       }
-  //     )
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  //   //setFormData(data);
-  // };
-  // useEffect(() => {
-  //   getData();
-  // }, []);
+   //URL : https://api.khetkhamar.org/api/react/addresses/{shipping_address || billing_address}/{userId}
+//  const getData =  () => {
+//       axiosInstance
+//        .get(`/addresses/billing_address/3445`, {
+//          headers: {
+//            Authorization: `Bearer ${getToken.token}`,
+//         },
+//        })
+//        .then(
+//          ({
+//            data: {
+//              data: { data },
+//            },
+//          }) => {
+//            setFormData(data);
+//            //console.log("get", data);
+//         }
+//        )
+//        .catch((error) => {
+//          console.log(error);
+//       });
+//      /setFormData(data);
+//    };
+//    useEffect(() => {
+//      getData();
+//    }, []);
 
-  //const AddressEdit = (id) => {};
+// *Update Authenticated user's shipping + billing address* DONE
+   
+// URL : https://api.khetkhamar.org/api/react/address/update
+
+// HEADERS : {"Authorization" : "Bearer yourTokenHere"}
+
+// DATA : {
+//             "id" : {addressId}
+//             "address_type" : "billing_address || shipping_address",
+//             "address" : "My address",
+//             "country" : "My country",
+//             "city" : "My city",
+//             "postal_code" : "My postal_code",
+//             "phone" : "+8801911111111"
+//         }
+
+// METHOD : POST
+
+  // const editAddress = (i) => {
+  //   axiosInstance.post("/address/update",{
+  //     id:i.id,
+  //     address_type:i.address_type,
+  //     address:i.address,
+  //     country:i.country,
+  //     city:i.city,
+  //     postal_code:i.
+
+  //   },{
+  //     headers: {
+  //       Authorization: `Bearer ${getToken.token}`,
+  //     }})
+    //console.log("id",id);
+  //};
 
   //*Order place*
   // const placeOrder = () => {
@@ -105,12 +137,13 @@ export const CheckOut = () => {
                           {i ? i.city : ""}
                           {i ? i.country: ""}
                           {i ? i.postal_code : ""}
-                          
+                          {/* <button onClick={()=>editAddress(i)}>edit</button> */}
                         </>
+                        
                       );
                     })} 
                   </p>
-                  <button>edit</button>
+                  
                 </div>
               </div>
             </div>

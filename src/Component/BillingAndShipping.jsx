@@ -51,7 +51,7 @@ export const BillingAndShipping = () => {
   };
   const getData =  () => {
      axiosInstance
-      .get(`/addresses/billing_address/3445`, {
+      .get(`/addresses/billing_address/${user.id}`, {
         headers: {
           Authorization: `Bearer ${getToken.token}`,
         },
