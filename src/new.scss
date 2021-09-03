@@ -419,7 +419,7 @@ section {
   z-index: 10;
 }
 .modal-container {
-  background: #222;
+  background: $primary-color;
   border-radius: var($radius);
   width: 30vw;
   height: 30vh;
@@ -428,14 +428,67 @@ section {
   display: grid;
   place-items: center;
   position: relative;
+  @media (max-width: 1376px) {
+    width: 50vw;
+    height: 40vh;
+  }
+  @media (max-width: 990px) {
+    width: 60vw;
+    height: 40vh;
+  }
+  @media (max-width: 768px) {
+    width: 80vw;
+    height: 50vh;
+  }
+  @media (max-width: 557px) {
+    width: 80vw;
+    height: 40vh;
+  }
   input {
     width: 25vw;
     height: 5vh;
+    color: #fff;
+    @media (max-width: 557px) {
+      width: 70vw;
+      height: 7vh;
+    }
+    @media (max-width: 768px) {
+      width: 70vw;
+      height: 7vh;
+    }
+    @media (max-width: 990px) {
+      width: 50vw;
+      height: 7vh;
+    }
+    @media (max-width: 1376px) {
+      width: 40vw;
+      height: 7vh;
+    }
   }
   #sub {
     width: 25vw;
     height: 5vh;
     margin-top: 15px;
+    background: #666666;
+    border: none;
+    color: #ffffff !important;
+    font-size: 15x;
+    @media (max-width: 557px) {
+      width: 40vw;
+      height: 7vh;
+    }
+    @media (max-width: 768px) {
+      width: 60vw;
+      height: 7vh;
+    }
+    @media (max-width: 990px) {
+      width: 50vw;
+      height: 7vh;
+    }
+    @media (max-width: 1376px) {
+      width: 40vw;
+      height: 7vh;
+    }
   }
 }
 
@@ -448,26 +501,44 @@ section {
   border-color: transparent;
   color: #fff;
   cursor: pointer;
+  @media (max-width: 557px) {
+    top: 0.3rem;
+    right: 0.5rem;
+  }
+  @media (max-width: 990px) {
+    top: 0.3rem;
+    right: 0.5rem;
+  }
+  @media (max-width: 1376px) {
+    top: 0.3rem;
+    right: 0.5rem;
+  }
 }
 .bill {
   background: #fff;
   border-radius: var($radius);
   height: 550px;
-  max-width: var($fixed-width);
+  max-width: 500px;
   text-align: center;
   display: grid;
-
   position: relative;
   input {
-    width: 500px;
+    width: 100%;
     height: 40px;
     margin-bottom: 10px;
   }
+  h1 {
+    text-transform: capitalize;
+  }
 }
-#sub2 {
-  width: 25vw;
-  height: 5vh;
+#subbtn2 {
+  width: 100%;
+  height: 40px;
+  background: $primary-color;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
+
 /***
 ================================
            checkout
@@ -568,7 +639,7 @@ section {
 ================================
 **/
 .order {
-  width: 400px;
+  width: 100%;
   margin-left: 40px;
 
   .check-total {
@@ -590,6 +661,11 @@ section {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+.plc_order {
+  button {
+    background: $primary-color !important;
+  }
 }
 /***
 ================================

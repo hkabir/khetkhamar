@@ -20,7 +20,7 @@ export const AppProvider = ({ children }) => {
   const [category, setCategory] = useState([]);
   const [item, setItem] = useState();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [me, setMe] = useState();
+  //const [me, setMe] = useState();
   const [formData, setFormData] = useState();
   //console.log("tk", token);
 
@@ -45,15 +45,17 @@ export const AppProvider = ({ children }) => {
       });
   };
 
-  const getUser = () => {
-    axiosInstance
-      .get("/me", { headers: { Authorization: `Bearer ${getToken.token}` } })
-      .then((res) => {})
-      .catch((error) => {});
-  };
-  useEffect(() => {
-    getUser();
-  }, []);
+  // useEffect(() => {
+  //   getUser();
+  // }, []);
+
+  // const getUser = () => {
+  //   axiosInstance
+  //     .get("/me", { headers: { Authorization: `Bearer ${getToken.token}` } })
+  //     .then((res) => {})
+  //     .catch((error) => {});
+  // };
+
   const caItem = (id) => {
     const params = new URLSearchParams(window.location.search);
     params.set("catagory", `${id}`);

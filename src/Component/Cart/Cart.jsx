@@ -3,14 +3,16 @@ import styled from "styled-components";
 import { useGlobalContext } from "../../reducer/cartContext";
 import { FaShoppingBag, FaWindowClose } from "react-icons/fa";
 import { CartItem } from "./CartItem";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { reactLocalStorage } from "reactjs-localstorage";
 //import { Scrollbars } from "react-custom-scrollbars-2";
 
 export const Cart = () => {
   const { openCart, cartClose, cartItems, totalAmount, openModal, getToken } =
     useGlobalContext();
-  console.log(getToken);
+  //console.log(getToken);
   //const history = useHistory();
+  reactLocalStorage.set("cart", JSON.stringify(cartItems));
 
   return (
     <CartWrapper show={openCart}>
@@ -82,6 +84,7 @@ const CartWrapper = styled.div`
   border-left: 3px solid #ffff;
   transform: ${(props) => (props.show ? "translateX(0)" : "translateX(100%)")};
   transition: all 0.3s ease-in-out;
+  overflow-y: auto;
   @media (max-width: 1376px) {
     width: 28%;
   }
