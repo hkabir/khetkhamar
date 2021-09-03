@@ -4,9 +4,12 @@ import { useGlobalContext } from "../reducer/cartContext";
 import axiosInstance from "../helper/axios";
 
 export const CheckOut = () => {
+  const [editItem, setEditItem] = useState({})
   //const [successs, setSuccesss] = useState(false);
   const { cartItems, formData, totalAmount, getToken, openModal, setFormData } =
     useGlobalContext();
+
+  const { user } = getToken;
 
   const [shippinM] = useState({
     shipping_message: "shipping_message",
@@ -16,66 +19,51 @@ export const CheckOut = () => {
   console.log("to", formData);
   const temTotal = totalAmount + shippinM.shipping_cost;
 
-   //URL : https://api.khetkhamar.org/api/react/addresses/{shipping_address || billing_address}/{userId}
-//  const getData =  () => {
-//       axiosInstance
-//        .get(`/addresses/billing_address/3445`, {
-//          headers: {
-//            Authorization: `Bearer ${getToken.token}`,
-//         },
-//        })
-//        .then(
-//          ({
-//            data: {
-//              data: { data },
-//            },
-//          }) => {
-//            setFormData(data);
-//            //console.log("get", data);
-//         }
-//        )
-//        .catch((error) => {
-//          console.log(error);
-//       });
-//      /setFormData(data);
-//    };
-//    useEffect(() => {
-//      getData();
-//    }, []);
+ const getData =  () => {
+      axiosInstance
+       .get(`/addresses/billing_address/${getToken.user.id}`, {
+         headers: {
+           Authorization: `Bearer ${getToken.token}`,
+        },
+       })
+       .then(
+         ({
+           data: {
+             data: { data },
+           },
+         }) => {
+           setFormData(data);
+           //console.log("get", data);
+        }
+       )
+       .catch((error) => {
+         console.log(error);
+      });
+    //  setFormData(data);
+   };
+   useEffect(() => {
+     getData();
+   }, []);
 
-// *Update Authenticated user's shipping + billing address* DONE
-   
-// URL : https://api.khetkhamar.org/api/react/address/update
-
-// HEADERS : {"Authorization" : "Bearer yourTokenHere"}
-
-// DATA : {
-//             "id" : {addressId}
-//             "address_type" : "billing_address || shipping_address",
-//             "address" : "My address",
-//             "country" : "My country",
-//             "city" : "My city",
-//             "postal_code" : "My postal_code",
-//             "phone" : "+8801911111111"
-//         }
-
-// METHOD : POST
-
-  // const editAddress = (i) => {
-  //   axiosInstance.post("/address/update",{
-  //     id:i.id,
-  //     address_type:i.address_type,
-  //     address:i.address,
-  //     country:i.country,
-  //     city:i.city,
-  //     postal_code:i.
-
-  //   },{
-  //     headers: {
-  //       Authorization: `Bearer ${getToken.token}`,
-  //     }})
-    //console.log("id",id);
-  //};
+  const updateAddress = (e) => {
+    e.preventDefault()
+    console.log(user.id);
+    axiosInstance.post("/address/update",{
+      id: user.id,
+      address_type: 'billing_address',
+      address: editItem.address,
+      country: editItem.country,
+      city: editItem.city,
+      postal_code: editItem.postal_code,
+      phone: editItem.phone
+    },{
+      headers: {
+        Authorization: `Bearer ${getToken.token}`,
+      }}).then(data => {
+        console.log(data)
+        getData()
+      })
+  };
 
   //*Order place*
   // const placeOrder = () => {
@@ -130,22 +118,31 @@ export const CheckOut = () => {
                   <h1>billing address</h1>
                   <i className="fas fa-check-circle"></i>
                   <p>
-                     {formData.map((i) => {
+                     {formData && formData.map((i) => {
                       return (
                         <>
                           {i ? i.address: ""}
                           {i ? i.city : ""}
                           {i ? i.country: ""}
                           {i ? i.postal_code : ""}
-                          {/* <button onClick={()=>editAddress(i)}>edit</button> */}
+                          <button onClick={ ()=> setEditItem(i) }>edit</button>
                         </>
                         
                       );
                     })} 
                   </p>
-                  
                 </div>
               </div>
+              { editItem &&
+                <form onSubmit={updateAddress}>
+                  <input type="text" defaultValue={editItem.address} onChange={(e) => setEditItem({...editItem, address: e.target.value})} className="form-control" placeholder="Address"/>
+                  <input type="text" defaultValue={editItem.city} onChange={(e) => setEditItem({...editItem, city: e.target.value})} className="form-control" placeholder="City"/>
+                  <input type="text" defaultValue={editItem.country} onChange={(e) => setEditItem({...editItem, country: e.target.value})} className="form-control" placeholder="Country"/>
+                  <input type="number" defaultValue={editItem.postal_code} onChange={(e) => setEditItem({...editItem, postal_code: e.target.value})} className="form-control" placeholder="Postal code"/>
+                  <input type="number" defaultValue={editItem.phone} onChange={(e) => setEditItem({...editItem, phone: e.target.value})} className="form-control" placeholder="Phone number"/>
+                  <button className="btn btn-success">Update</button>
+                </form>
+              }
             </div>
             <div className="justify-content-md-end row-space-top">
               <div className="order">
