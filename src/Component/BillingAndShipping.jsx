@@ -49,31 +49,31 @@ export const BillingAndShipping = () => {
     history.push("./checkoutpage");
     reset();
   };
-  const getData =  () => {
-     axiosInstance
-      .get(`/addresses/billing_address/${user.id}`, {
-        headers: {
-          Authorization: `Bearer ${getToken.token}`,
-        },
-      })
-      .then(
-        ({
-          data: {
-            data: { data },
-          },
-        }) => {
-          setFormData(data);
-          //console.log("get", data);
-        }
-      )
-      .catch((error) => {
-        console.log(error);
-      });
-    //setFormData(data);
-  };
-  useEffect(() => {
-    getData();
-  }, []);
+  // const getData =  () => {
+  //    axiosInstance
+  //     .get(`/addresses/billing_address/${user.id}`, {
+  //       headers: {
+  //         Authorization: `Bearer ${getToken.token}`,
+  //       },
+  //     })
+  //     .then(
+  //       ({
+  //         data: {
+  //           data: { data },
+  //         },
+  //       }) => {
+  //         setFormData(data);
+  //         //console.log("get", data);
+  //       }
+  //     )
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  //   //setFormData(data);
+  // };
+  // useEffect(() => {
+  //   getData();
+  // }, []);
   return (
     <div>
       <main>

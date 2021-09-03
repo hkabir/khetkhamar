@@ -7,7 +7,7 @@ export const CheckOut = () => {
   //const [successs, setSuccesss] = useState(false);
   const { cartItems, formData, totalAmount, getToken, openModal, setFormData } =
     useGlobalContext();
-
+    const { user } = getToken;
   const [shippinM] = useState({
     shipping_message: "shipping_message",
     shipping_cost: 30,
@@ -17,31 +17,30 @@ export const CheckOut = () => {
   const temTotal = totalAmount + shippinM.shipping_cost;
 
    //URL : https://api.khetkhamar.org/api/react/addresses/{shipping_address || billing_address}/{userId}
-//  const getData =  () => {
-//       axiosInstance
-//        .get(`/addresses/billing_address/3445`, {
-//          headers: {
-//            Authorization: `Bearer ${getToken.token}`,
-//         },
-//        })
-//        .then(
-//          ({
-//            data: {
-//              data: { data },
-//            },
-//          }) => {
-//            setFormData(data);
-//            //console.log("get", data);
-//         }
-//        )
-//        .catch((error) => {
-//          console.log(error);
-//       });
-//      /setFormData(data);
-//    };
-//    useEffect(() => {
-//      getData();
-//    }, []);
+  const getData =  () => {
+       axiosInstance
+       .get(`/addresses/billing_address/${user.id}`, {
+          headers: {           Authorization: `Bearer ${getToken.token}`,
+        },
+       })
+       .then(
+         ({
+          data: {
+             data: { data },
+           },
+          }) => {
+            setFormData(data);
+            //console.log("get", data);
+         }
+        )
+       .catch((error) => {
+          console.log(error);
+       });
+      //setFormData(data);
+    };
+   useEffect(() => {
+     getData();
+   }, []);
 
 // *Update Authenticated user's shipping + billing address* DONE
    
@@ -111,6 +110,9 @@ export const CheckOut = () => {
   //       //alert("order place");
   //     });
   // };
+  const editAddress=(i)=>{
+  console.log("i",i);
+  }
 
   return (
     <>
@@ -130,18 +132,20 @@ export const CheckOut = () => {
                   <h1>billing address</h1>
                   <i className="fas fa-check-circle"></i>
                   <p>
-                     {formData.map((i) => {
+                     {formData?formData.map((i) => {
                       return (
-                        <>
+                        <ul>
+                          <li><>
                           {i ? i.address: ""}
                           {i ? i.city : ""}
                           {i ? i.country: ""}
                           {i ? i.postal_code : ""}
-                          {/* <button onClick={()=>editAddress(i)}>edit</button> */}
-                        </>
+                          <button onClick={()=>editAddress(i)}>edit</button> 
+                        </></li>
+                        </ul>
                         
                       );
-                    })} 
+                    }):""} 
                   </p>
                   
                 </div>
