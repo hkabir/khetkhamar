@@ -4,6 +4,7 @@ import { CheckoutPage } from "../pages/CheckoutPage.jsx";
 import { HomePages } from "../pages/HomePages.jsx";
 //import { ProductList } from "../Component/Categories/Products/ProductList.jsx";
 import { BillingPage } from "../pages/BillingPage.jsx";
+import Pay from '../pages/Pay'
 
 export const RouteApp = () => {
   return (
@@ -12,6 +13,7 @@ export const RouteApp = () => {
         <Route exact path="/" component={HomePages} />
         <Route path="/checkoutpage" component={CheckoutPage} />
         <Route path="/billingpage" component={BillingPage} />
+        <Route path="/pay" component={Pay} />
       </Switch>
     </>
   );
