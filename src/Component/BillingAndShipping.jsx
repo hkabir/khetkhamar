@@ -49,6 +49,7 @@ export const BillingAndShipping = () => {
     history.push("./checkoutpage");
     reset();
   };
+
   return (
     <div>
       <main>

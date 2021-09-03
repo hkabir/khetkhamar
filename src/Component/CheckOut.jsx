@@ -19,11 +19,10 @@ export const CheckOut = () => {
   console.log("to", formData);
   const temTotal = totalAmount + shippinM.shipping_cost;
 
- const getData =  () => {
-      axiosInstance
-       .get(`/addresses/billing_address/${getToken.user.id}`, {
-         headers: {
-           Authorization: `Bearer ${getToken.token}`,
+  const getData =  () => {
+       axiosInstance
+       .get(`/addresses/billing_address/${user.id}`, {
+          headers: {           Authorization: `Bearer ${getToken.token}`,
         },
        })
        .then(
@@ -99,6 +98,9 @@ export const CheckOut = () => {
   //       //alert("order place");
   //     });
   // };
+  const editAddress=(i)=>{
+  console.log("i",i);
+  }
 
   return (
     <>
@@ -118,18 +120,19 @@ export const CheckOut = () => {
                   <h1>billing address</h1>
                   <i className="fas fa-check-circle"></i>
                   <p>
-                     {formData && formData.map((i) => {
+
+                     {formData?formData.map((i) => {
                       return (
-                        <>
+                        <ul>
+                          <li>
                           {i ? i.address: ""}
                           {i ? i.city : ""}
                           {i ? i.country: ""}
                           {i ? i.postal_code : ""}
                           <button onClick={ ()=> setEditItem(i) }>edit</button>
-                        </>
-                        
+                        </li>
                       );
-                    })} 
+                    }):""} 
                   </p>
                 </div>
               </div>
