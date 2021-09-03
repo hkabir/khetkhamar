@@ -4,7 +4,8 @@ const Pay = () => {
     const [data, setData] = useState([1, 2, 3])
     
     const payNow = () => {
-        fetch('https://test2.khetkhamar.org/api/react/place-order', {
+        fetch('http://localhost/khetkhamar/khetkhamar/api/react/place-order', {
+            mode: 'no-cors',
             method: 'POST',
             headers: {
                 'Accept': 'application/json, text/plain, */*',
