@@ -24,7 +24,10 @@ export const Product = (props) => {
     incrementItem,
   } = useGlobalContext();
   //console.log(upload.file_name);
-
+  // const quntity = cartItems.map((qunt) => {
+  //   return qunt.id === id;
+  // });
+  // console.log("qu", quntity.quantity);
   const isInCart = (id) => {
     return !!cartItems.find((item) => item.id === id);
   };
@@ -47,6 +50,7 @@ export const Product = (props) => {
               onClick={() => decrementItem(id)}
               className="btn-cart-plus-minus"
             />
+
             <FaPlus
               onClick={() => incrementItem(id)}
               className="btn-cart-plus"

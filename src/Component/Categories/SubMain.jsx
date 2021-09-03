@@ -9,7 +9,6 @@ export const SubMain = () => {
       <div className="col overflow-auto h-100">
         <div className="bg-light border rounded-3 p-3">
           <Banner />
-
           <ProductList />
         </div>
       </div>

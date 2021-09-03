@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../asset/images/logo2.png";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 import { useGlobalContext } from "../reducer/cartContext";
 export const NavBar = () => {
@@ -45,9 +45,9 @@ export const NavBar = () => {
             </Link>
           </li>
           <li className="nav-item dropdown">
-            <a
+            <NavLink
               className="nav-link dropdown-toggle"
-              href="cat"
+              to=""
               id="navbarDropdown"
               role="button"
               data-toggle="dropdown"
@@ -55,40 +55,36 @@ export const NavBar = () => {
               aria-expanded="false"
             >
               Categories
-            </a>
+            </NavLink>
             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
               {category.map((item) => {
                 return (
-                  <a
+                  <NavLink
+                    to=""
                     className="dropdown-item"
                     key={item.id}
-                    onClick={() => caItem(item.id)}
+                    onClick={() => caItem(item.id, item.name)}
                   >
                     {item.name}
-                  </a>
+                  </NavLink>
                 );
               })}
             </div>
           </li>
           <li className="nav-item">
-            <a
-              className="nav-link"
-              href="ta"
-              tabindex="-1"
-              aria-disabled="true"
-            >
+            <NavLink className="nav-link" to="" aria-disabled="true">
               Express
-            </a>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="cat">
+            <NavLink to="" className="nav-link" href="cat">
               Jumma Fiesta{" "}
-            </a>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="cat">
+            <NavLink to="" className="nav-link" href="cat">
               Ezelo
-            </a>
+            </NavLink>
           </li>
         </ul>
       </div>

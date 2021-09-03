@@ -1,82 +1,50 @@
-import React,{useEffect} from "react";
+import React from "react";
 import { useGlobalContext } from "../reducer/cartContext";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import axiosInstance from "../helper/axios";
-//import axios from "axios";
+import { FaTimes } from "react-icons/fa";
 
-export const BillingAndShipping = () => {
+export const EditForm = () => {
   let history = useHistory();
-  const { setFormData, getToken } = useGlobalContext();
-  const { user } = getToken;
+  const { setFormData, isModalOpen, formData, getToken, closeModal } =
+    useGlobalContext();
+  //const { user } = getToken;
   const {
     register,
     handleSubmit,
-  
+    formState: { errors },
     reset,
   } = useForm();
 
   ///Store Authenticated user's shipping + billing address.
-  const onSubmit = (data) => {
-    axiosInstance
-      .post(
-        "/address/store",
-        {
-          user_id: user.id,
-          address_type: "billing_address ",
-          address: data.address,
-          country: data.country,
-          city: data.city,
-          postal_code: data.postal_code,
-          phone: data.phone,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${getToken.token}`,
-          },
-        }
-      )
-      .then(({ data: { data } }) => {
-       // setFormData(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
 
-    //setFormData(data);
+  const onSubmit = (data) => {
+    setFormData(data);
 
     //console.log(data);
     history.push("./checkoutpage");
     reset();
   };
-  const getData =  () => {
-     axiosInstance
-      .get(`/addresses/billing_address/3445`, {
+
+  const editAddress = () => {
+    axiosInstance.get(
+      "/address/update",
+      {},
+      {
         headers: {
           Authorization: `Bearer ${getToken.token}`,
         },
-      })
-      .then(
-        ({
-          data: {
-            data: { data },
-          },
-        }) => {
-          setFormData(data);
-          //console.log("get", data);
-        }
-      )
-      .catch((error) => {
-        console.log(error);
-      });
-    //setFormData(data);
+      }
+    );
   };
-  useEffect(() => {
-    getData();
-  }, []);
   return (
-    <div>
-      <main>
+    <main>
+      <div
+        className={`${
+          isModalOpen ? "modal-overlay show-modal" : "modal-overlay"
+        }`}
+      >
         <div className="container">
           <div className="row justify-content-md-center row-space-top">
             <div className="col-lg-6 col-md-12 col-sm-12">
@@ -93,7 +61,7 @@ export const BillingAndShipping = () => {
                     name="country"
                     placeholder="country"
                     {...register("country", { required: true })}
-                  />
+                  ></input>
                   <input
                     name="city"
                     placeholder="city"
@@ -118,10 +86,13 @@ export const BillingAndShipping = () => {
                   </button>
                 </form>
               </div>
+              <button className="close-modal-btn" onClick={closeModal}>
+                <FaTimes />
+              </button>
             </div>
           </div>
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 };

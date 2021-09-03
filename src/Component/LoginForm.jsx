@@ -13,7 +13,7 @@ export const LoginForm = () => {
   const [counter, setCounter] = useState(40);
   const [viewOtpForm, setViewOtpForm] = useState(false);
   const [phone, setPhone] = useState();
-  console.log("ph", phone);
+
   let history = useHistory();
 
   const {
@@ -28,7 +28,7 @@ export const LoginForm = () => {
       .then(({ data: { data } }) => {
         console.log("data", data);
         setId(data.user_id);
-        //console.log("id", data.user_id);
+        console.log("id", data.user_id);
 
         setViewOtpForm(true);
       })

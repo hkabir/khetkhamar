@@ -3,14 +3,16 @@ import styled from "styled-components";
 import { useGlobalContext } from "../../reducer/cartContext";
 import { FaShoppingBag, FaWindowClose } from "react-icons/fa";
 import { CartItem } from "./CartItem";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { reactLocalStorage } from "reactjs-localstorage";
 //import { Scrollbars } from "react-custom-scrollbars-2";
 
 export const Cart = () => {
   const { openCart, cartClose, cartItems, totalAmount, openModal, getToken } =
     useGlobalContext();
-  console.log(getToken);
+  //console.log(getToken);
   //const history = useHistory();
+  reactLocalStorage.set("cart", JSON.stringify(cartItems));
 
   return (
     <CartWrapper show={openCart}>
