@@ -28,7 +28,7 @@ export const BillingAndShipping = () => {
           country: data.country,
           city: data.city,
           postal_code: data.postal_code,
-          phone: data.phone,
+          phone: user.phone,
         },
         {
           headers: {
@@ -80,11 +80,7 @@ export const BillingAndShipping = () => {
                     placeholder="postal_code"
                     {...register("postal_code", { required: true })}
                   />
-                  <input
-                    name="phone"
-                    placeholder="phone"
-                    {...register("phone", { required: true })}
-                  />
+                 
                   <button
                     id="subbtn2"
                     type="submit"

@@ -130,7 +130,7 @@ export const CheckOut = () => {
                           {i ? i.country: ""}
                           {i ? i.postal_code : ""}
                           <button onClick={ ()=> setEditItem(i) }>edit</button>
-                        </li>
+                        </li></ul>
                       );
                     }):""} 
                   </p>
