@@ -37,7 +37,6 @@ export const AppProvider = ({ children }) => {
             data: { data },
           },
         }) => {
-          //console.log("category", data);
           setCategory(data);
         }
       )

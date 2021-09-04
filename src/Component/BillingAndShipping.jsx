@@ -28,7 +28,7 @@ export const BillingAndShipping = () => {
           country: data.country,
           city: data.city,
           postal_code: data.postal_code,
-          phone: data.phone,
+          phone: user.phone,
         },
         {
           headers: {
@@ -49,31 +49,7 @@ export const BillingAndShipping = () => {
     history.push("./checkoutpage");
     reset();
   };
-  // const getData =  () => {
-  //    axiosInstance
-  //     .get(`/addresses/billing_address/${user.id}`, {
-  //       headers: {
-  //         Authorization: `Bearer ${getToken.token}`,
-  //       },
-  //     })
-  //     .then(
-  //       ({
-  //         data: {
-  //           data: { data },
-  //         },
-  //       }) => {
-  //         setFormData(data);
-  //         //console.log("get", data);
-  //       }
-  //     )
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  //   //setFormData(data);
-  // };
-  // useEffect(() => {
-  //   getData();
-  // }, []);
+
   return (
     <div>
       <main>
@@ -104,11 +80,7 @@ export const BillingAndShipping = () => {
                     placeholder="postal_code"
                     {...register("postal_code", { required: true })}
                   />
-                  <input
-                    name="phone"
-                    placeholder="phone"
-                    {...register("phone", { required: true })}
-                  />
+                 
                   <button
                     id="subbtn2"
                     type="submit"
