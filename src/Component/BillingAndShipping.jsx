@@ -1,43 +1,57 @@
-import React,{useEffect} from "react";
-import { useGlobalContext } from "../reducer/cartContext";
+import React, { useEffect,useState } from "react";
+//import { useGlobalContext } from "../reducer/cartContext";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import axiosInstance from "../helper/axios";
 //import axios from "axios";
+import { reactLocalStorage } from "reactjs-localstorage";
 
 export const BillingAndShipping = () => {
+  const [gettoken, setGetToken] = useState({});
   let history = useHistory();
-  const { setFormData, getToken } = useGlobalContext();
-  const { user } = getToken;
+
+  //const { setFormData } = useGlobalContext();
+  console.log("to", gettoken);
   const {
     register,
     handleSubmit,
-  
+
     reset,
   } = useForm();
 
+  useEffect(() => {
+    const temToken = reactLocalStorage.getObject("token");
+    setGetToken(temToken);
+  }, []);
+
+  // const temtoekn=()=>{
+  //  reactLocalStorage.getObject("token");
+  //   return temtoekn
+  // }
+
   ///Store Authenticated user's shipping + billing address.
   const onSubmit = (data) => {
+    console.log("data");
     axiosInstance
       .post(
         "/address/store",
         {
-          user_id: user.id,
+          user_id: `${gettoken.user.id}`,
           address_type: "billing_address ",
           address: data.address,
           country: data.country,
           city: data.city,
           postal_code: data.postal_code,
-          phone: user.phone,
+          phone: `${gettoken.user.phone}`,
         },
         {
           headers: {
-            Authorization: `Bearer ${getToken.token}`,
+            Authorization: `Bearer ${gettoken.token}`,
           },
         }
       )
       .then(({ data: { data } }) => {
-       // setFormData(data);
+        history.push("./checkoutpage");
       })
       .catch((error) => {
         console.log(error);
@@ -46,7 +60,7 @@ export const BillingAndShipping = () => {
     //setFormData(data);
 
     //console.log(data);
-    history.push("./checkoutpage");
+
     reset();
   };
 
@@ -80,7 +94,7 @@ export const BillingAndShipping = () => {
                     placeholder="postal_code"
                     {...register("postal_code", { required: true })}
                   />
-                 
+
                   <button
                     id="subbtn2"
                     type="submit"

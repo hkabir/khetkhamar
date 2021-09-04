@@ -1,4 +1,7 @@
+import { reactLocalStorage } from "reactjs-localstorage";
+
 export const cartReducer = (state, action) => {
+  const localST=reactLocalStorage.set("cart", JSON.stringify(state.cartItems))
   switch (action.type) {
     case "ADD_TO_CART":
       if (!state.cartItems.find((item) => item.id === action.payload.id)) {
@@ -12,6 +15,8 @@ export const cartReducer = (state, action) => {
         ...state,
 
         cartItems: [...state.cartItems],
+        localST
+        
       };
     case "INCREMENTITEM":
       const updatedCart = state.cartItems.map((curElem) => {
