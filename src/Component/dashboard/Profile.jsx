@@ -13,6 +13,11 @@ const Profile = () => {
         console.log('Logged in user', user)
     }, [])
 
+
+
+
+
+    
     // URL : https://test2.khetkhamar.org/api/react/update/profile
 
     // HEADERS : {"Authorization" : "Bearer yourTokenHere"}
