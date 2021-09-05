@@ -7,6 +7,7 @@ import { BillingPage } from "../pages/BillingPage.jsx";
 import Pay from '../pages/Pay'
 import OrderDone from "../Component/OrderDone.jsx";
 import Profile from "../Component/dashboard/Profile.jsx";
+import Orders from "../Component/dashboard/Orders.jsx";
 
 export const RouteApp = () => {
   return (
@@ -18,6 +19,7 @@ export const RouteApp = () => {
         <Route path="/pay" component={Pay} />
         <Route path="/order-done" component={OrderDone} />
         <Route path="/dashboard/profile" component={Profile} />
+        <Route path="/dashboard/orders" component={Orders} />
       </Switch>
     </>
   );
