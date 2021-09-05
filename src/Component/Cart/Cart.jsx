@@ -1,19 +1,38 @@
-import React from "react";
+import React, { useEffect,useState } from "react";
 import styled from "styled-components";
 import { useGlobalContext } from "../../reducer/cartContext";
 import { FaShoppingBag, FaWindowClose } from "react-icons/fa";
 import { CartItem } from "./CartItem";
-import { Link } from "react-router-dom";
+import { Link,useHistory } from "react-router-dom";
 import { reactLocalStorage } from "reactjs-localstorage";
 //import { Scrollbars } from "react-custom-scrollbars-2";
+import axiosInstance from "../../helper/axios";
 
 export const Cart = () => {
+
+  const {user,setUser}=useState({})
   const { openCart, cartClose, cartItems, totalAmount, openModal, getToken } =
     useGlobalContext();
-  //console.log(getToken);
-  //const history = useHistory();
-  reactLocalStorage.set("cart", JSON.stringify(cartItems));
+  console.log("sr",user);
+  const history = useHistory();
+  // reactLocalStorage.set("cart", JSON.stringify(cartItems));
+ useEffect(()=>{
+getAthu()
+ },[])
 
+ const getAthu=()=>{
+    axiosInstance.get("/me",{ headers: {
+      Authorization: `Bearer ${
+        reactLocalStorage.getObject("token").token
+      }`,
+    }}).then(({data:{data:{data}}})=>{
+      setUser(data)
+        
+    }).catch(()=>{
+
+    })
+
+  }
   return (
     <CartWrapper show={openCart}>
       <div className="cart-top">
@@ -51,19 +70,9 @@ export const Cart = () => {
 
       {cartItems.length !== 0 ? (
         <div className="cart-checkout">
-          {getToken === {} ? (
-            <Link
-              to="./checkoutpage"
-              className="c-text"
-              // onClick={() => history.push("./billingpage")}
-            >
-              checkout
-            </Link>
-          ) : (
-            <span className="c-text" onClick={openModal}>
+          <span className="c-text" onClick={openModal}>
               checkout
             </span>
-          )}
           <span className="c-total">৳{totalAmount}</span>
         </div>
       ) : (

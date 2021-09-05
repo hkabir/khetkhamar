@@ -633,6 +633,79 @@ section {
   }
 }
 
+.content-body {
+  font-size: 14px;
+  max-width: 1100px;
+  margin-bottom: 55px;
+}
+
+.page-title {
+  color: #4f4f4f;
+  font-size: 25px;
+  letter-spacing: 0.8px;
+  margin: 20px 0;
+}
+
+.edit--section {
+  button {
+    background-color: transparent;
+    border: none;
+    color: $primary-color;
+
+    &:hover {
+      color: $category-link-color;
+    }
+  }
+}
+
+.custom-control-label {
+  &::before {
+    height: 20px;
+    left: -40px;
+    margin-top: -10px;
+    top: 50%;
+    width: 20px;
+  }
+
+  &::after {
+    left: -38px;
+    top: 50%;
+    margin-top: -0.5rem;
+  }
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+  background-color: $primary-color;
+  border-color: $primary-color;
+  color: #fff;
+}
+
+button.add-new {
+  background-color: transparent;
+  border: none;
+  color: $primary-color;
+
+  &:hover {
+    color: $category-link-color;
+  }
+}
+
+.payment--methods {
+  background-color: #fafafa;
+  border: 1px solid #dbdbdb;
+  border-radius: 6px;
+
+  .custom-control-label {
+    &::before {
+      left: -30px;
+    }
+
+    &::after {
+      left: -28px;
+    }
+  }
+}
+
 /***
 ================================
           Body
